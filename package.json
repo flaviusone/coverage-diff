@@ -5,5 +5,17 @@
   "main": "lib/coverageDiff.js",
   "repository": "git@github.com:flaviusone/coverage-diff.git",
   "author": "Flavius Tirnacop <flaviusone@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "",
+    "lint": "npm run eslint && npm run prettier",
+    "eslint": "eslint .",
+    "prettier": "prettier --single-quote --list-different './**/*.js'",
+    "prepublishOnly": "npm run lint && npm test"
+  },
+  "devDependencies": {
+    "eslint": "4.19.1",
+    "eslint-config-prettier": "2.9.0",
+    "prettier": "1.11.1"
+  }
 }
