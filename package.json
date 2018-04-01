@@ -2,7 +2,7 @@
   "name": "coverage-diff",
   "version": "1.0.0",
   "description": "Reports differences between two istanbul JSON code coverage summaries.",
-  "main": "index.js",
+  "main": "lib/coverageDiff.js",
   "repository": "git@github.com:flaviusone/coverage-diff.git",
   "author": "Flavius Tirnacop <flaviusone@gmail.com>",
   "license": "MIT"
