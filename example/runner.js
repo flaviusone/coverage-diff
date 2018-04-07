@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 const fs = require('fs');
-const { coverageDiff } = require('../lib/coverageDiff');
+const { coverageDiff } = require('../src');
 
 const base = JSON.parse(fs.readFileSync('./base-summary.json'));
 const head = JSON.parse(fs.readFileSync('./head-summary.json'));
