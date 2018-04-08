@@ -1,5 +1,4 @@
-const { mapToObject } = require('./helpers');
-const { objectToMap } = require('./helpers');
+import { objectToMap, mapToObject } from './helpers';
 
 /**
  * @typedef CoverageSummary
@@ -33,7 +32,7 @@ const { objectToMap } = require('./helpers');
  *
  * @return {Object.<string, CoverageSummary>}
  */
-module.exports.coverageDiffer = (base, head) => {
+export const coverageDiffer = (base, head) => {
   const baseMap = objectToMap(base);
   const headMap = objectToMap(head);
   const diffMap = new Map();

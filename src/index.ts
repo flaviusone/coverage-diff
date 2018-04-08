@@ -1,6 +1,6 @@
-const { coverageDiffer } = require('./coverageDiffer');
-const { diffChecker } = require('./diffChecker');
-const { resultFormatter } = require('./resultFormatter');
+import { coverageDiffer } from './coverageDiffer';
+import { diffChecker } from './diffChecker';
+import { resultFormatter } from './resultFormatter';
 
 const defaultOptions = {
   checkCriteria: ['lines', 'branches', 'functions', 'statements']
@@ -47,7 +47,7 @@ const defaultOptions = {
  *
  * @return {CoverageDiffOutput}
  */
-module.exports.coverageDiff = (base, head, options = defaultOptions) => {
+export default (base, head, options = defaultOptions) => {
   const diff = coverageDiffer(base, head);
   const { regression, files } = diffChecker(diff, options.checkCriteria);
   const results = resultFormatter(files);

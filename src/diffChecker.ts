@@ -1,5 +1,4 @@
-const { objectToMap } = require('./helpers');
-const { mapToObject } = require('./helpers');
+import { objectToMap, mapToObject } from './helpers';
 /**
  * Takes a json-summary formatted object (a diff) and checks if per-file
  *   coverage changed (increase/decrease).
@@ -26,7 +25,7 @@ const { mapToObject } = require('./helpers');
  * }
  *
  */
-module.exports.diffChecker = (diff, checkCriteria) => {
+export const diffChecker = (diff, checkCriteria) => {
   let regression = false;
   const diffMap = objectToMap(diff);
   const percentageMap = new Map();

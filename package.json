@@ -2,21 +2,27 @@
   "name": "coverage-diff",
   "version": "1.1.0",
   "description": "Reports differences between two istanbul JSON code coverage summaries.",
-  "main": "src/index.js",
+  "main": "lib/index",
+  "types": "lib/index",
   "repository": "git@github.com:flaviusone/coverage-diff.git",
   "author": "Flavius Tirnacop <flaviusone@gmail.com>",
   "license": "MIT",
   "scripts": {
     "test": "",
+    "tsc": "./node_modules/.bin/tsc",
     "lint": "npm run eslint && npm run prettier",
-    "eslint": "eslint .",
+    "eslint": "eslint 'src/**'",
     "prettier": "prettier --single-quote --list-different './**/*.js'",
     "prepublishOnly": "npm run lint && npm test"
   },
   "devDependencies": {
+    "@types/node": "9.6.2",
     "eslint": "4.19.1",
     "eslint-config-prettier": "2.9.0",
-    "prettier": "1.11.1"
+    "jest": "22.4.3",
+    "prettier": "1.11.1",
+    "typescript": "2.8.1",
+    "typescript-eslint-parser": "14.0.0"
   },
   "dependencies": {
     "markdown-table": "1.1.1"

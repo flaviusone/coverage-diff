@@ -1,6 +1,6 @@
-const markdownTable = require('markdown-table');
+import markdownTable from 'markdown-table';
 
-module.exports.resultFormatter = files => {
+export const resultFormatter = files => {
   const table = [];
   const header = [
     'File',
