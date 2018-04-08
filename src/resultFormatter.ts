@@ -1,6 +1,6 @@
 import markdownTable from 'markdown-table';
 
-export const resultFormatter = files => {
+export const resultFormatter = (files): string => {
   const table = [];
   const header = [
     'File',

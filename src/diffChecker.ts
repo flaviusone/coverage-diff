@@ -1,11 +1,10 @@
 import { objectToMap, mapToObject } from './helpers';
+import { IJsonSummary, IResultFormat, Criteria } from './common';
 /**
  * Takes a json-summary formatted object (a diff) and checks if per-file
  *   coverage changed (increase/decrease).
  * Returns a pretty-formatted result and regression status.
  *
- * @param  {Object.<string, CoverageSummary>} diff Json-summary formatted object
- * @param {String[]} checkCriteria One of lines, statements, functions, branches
  * @return {Object}
  *
  * Example return object
@@ -25,12 +24,15 @@ import { objectToMap, mapToObject } from './helpers';
  * }
  *
  */
-export const diffChecker = (diff, checkCriteria) => {
+export const diffChecker = (
+  diff: IJsonSummary,
+  checkCriteria: Criteria[]
+): { files: IResultFormat; regression: boolean } => {
   let regression = false;
   const diffMap = objectToMap(diff);
   const percentageMap = new Map();
-  const isBelowThreshold = x => x < 0;
-  const nonZeroTest = x => x !== 0;
+  const isBelowThreshold = (x: number) => x < 0;
+  const nonZeroTest = (x: number) => x !== 0;
 
   // TODO total will have custom formatting in a future release. Exclude for now.
   diffMap.delete('total');

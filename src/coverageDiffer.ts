@@ -1,38 +1,14 @@
 import { objectToMap, mapToObject } from './helpers';
-
-/**
- * @typedef CoverageSummary
- * @type {Object}
- *
- * @property {CoverageInfo} lines
- * @property {CoverageInfo} statements
- * @property {CoverageInfo} functions
- * @property {CoverageInfo} branches
- */
-
-/**
- * @typedef CoverageInfo
- * @type {Object}
- *
- * @property {number} total Total number of elements (lines, functions,
- *   statements, branches).
- * @property {number} covered Numner of covered elements.
- * @property {number} skipped Number of skipped elements.
- * @property {number} pct Coverage percentage (covered/total ratio).
- */
+import { IJsonSummary, ICoverageSummary, ICoverageInfo } from './common';
 
 /**
  * Compares two Istanbul json-summary formatted coverage objects and outputs the
  *   diff between them.
- *
- * @param  {Object.<string, CoverageSummary>} base json-summary formatted object
- *   for the base branch.
- * @param  {Object.<string, CoverageSummary>} head json-summary formatted object
- *   for the head branch.
- *
- * @return {Object.<string, CoverageSummary>}
  */
-export const coverageDiffer = (base, head) => {
+export const coverageDiffer = (
+  base: IJsonSummary,
+  head: IJsonSummary
+): IJsonSummary => {
   const baseMap = objectToMap(base);
   const headMap = objectToMap(head);
   const diffMap = new Map();
@@ -47,11 +23,11 @@ export const coverageDiffer = (base, head) => {
 
 /**
  * Returns the diff of two CoverageSummary objects.
- * @param  {CoverageSummary} summaryA
- * @param  {CoverageSummary} summaryB
- * @return {CoverageSummary}
  */
-const diffSummary = (summaryA, summaryB) => {
+const diffSummary = (
+  summaryA: ICoverageSummary,
+  summaryB: ICoverageSummary
+): ICoverageSummary => {
   if (!summaryB) return summaryA; // Empty summary.
 
   return {
@@ -64,11 +40,11 @@ const diffSummary = (summaryA, summaryB) => {
 
 /**
  * Returns the diff of two CoverageInfo objects.
- * @param  {CoverageInfo} infoA
- * @param  {CoverageInfo} infoB
- * @return {CoverageInfo}
  */
-const diffInfo = (infoA, infoB) => {
+const diffInfo = (
+  infoA: ICoverageInfo,
+  infoB: ICoverageInfo
+): ICoverageInfo => {
   return {
     total: infoA.total - infoB.total,
     covered: infoA.covered - infoB.covered,
