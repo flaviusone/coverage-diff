@@ -9,25 +9,6 @@ import {
  * Takes a json-summary formatted object (a diff) and checks if per-file
  *   coverage changed (increase/decrease).
  * Returns a pretty-formatted result and regression status.
- *
- * @return {Object}
- *
- * Example return object
- *  {
- *    files: {
- *     file_1 : {
- *       deltas: {
- *          lines: 80.2,
- *          functions: 0,
- *          branches: 1,
- *          statements: -2
- *        },
- *        increased: false
- *      }
- *   },
- *   regression: true
- * }
- *
  */
 export const diffChecker = (
   diff: IJsonSummary,
