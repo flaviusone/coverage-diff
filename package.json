@@ -12,7 +12,7 @@
     "tsc": "./node_modules/.bin/tsc",
     "lint": "npm run eslint && npm run prettier",
     "eslint": "eslint 'src/**'",
-    "prettier": "prettier --single-quote --list-different './**/*.js'",
+    "prettier": "prettier --single-quote --list-different './src/**/*.{js,ts}'",
     "prepublishOnly": "npm run lint && npm run tsc && npm test"
   },
   "devDependencies": {
