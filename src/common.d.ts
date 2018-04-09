@@ -28,6 +28,10 @@ export interface IConfigOptions {
   checkCriteria: Array<Criteria>;
 }
 
+export interface IFilesResults {
+  [key: string]: IFileResultFormat;
+}
+
 export interface IFileResultFormat {
   deltas: {
     lines: number;

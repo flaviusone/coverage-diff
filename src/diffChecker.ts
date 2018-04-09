@@ -1,5 +1,10 @@
 import { objectToMap, mapToObject } from './helpers';
-import { IJsonSummary, IFileResultFormat, Criteria } from './common';
+import {
+  IJsonSummary,
+  IFilesResults,
+  IFileResultFormat,
+  Criteria
+} from './common';
 /**
  * Takes a json-summary formatted object (a diff) and checks if per-file
  *   coverage changed (increase/decrease).
@@ -27,7 +32,7 @@ import { IJsonSummary, IFileResultFormat, Criteria } from './common';
 export const diffChecker = (
   diff: IJsonSummary,
   checkCriteria: Criteria[]
-): { files: { [key: string]: IFileResultFormat }; regression: boolean } => {
+): { files: IFilesResults; regression: boolean } => {
   let regression = false;
   const diffMap = new Map(Object.entries(diff));
   const percentageMap: Map<string, IFileResultFormat> = new Map();
