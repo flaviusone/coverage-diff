@@ -13,7 +13,7 @@
     "lint": "npm run eslint && npm run prettier",
     "eslint": "eslint 'src/**'",
     "prettier": "prettier --single-quote --list-different './**/*.js'",
-    "prepublishOnly": "npm run lint && npm test"
+    "prepublishOnly": "npm run lint && npm run tsc && npm test"
   },
   "devDependencies": {
     "@types/node": "9.6.2",
