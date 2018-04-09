@@ -2,6 +2,7 @@ import markdownTable from 'markdown-table';
 import { IFilesResults } from './common';
 
 export const resultFormatter = (files: IFilesResults): string => {
+  let noChange = true;
   const table: Array<(string | number)[]> = [];
   const header = [
     'File',
@@ -25,7 +26,8 @@ export const resultFormatter = (files: IFilesResults): string => {
     ];
 
     table.push(row);
+    noChange = false;
   });
 
-  return markdownTable(table);
+  return noChange ? 'Nothing changed.' : markdownTable(table);
 };
