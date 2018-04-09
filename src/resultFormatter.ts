@@ -1,7 +1,8 @@
 import markdownTable from 'markdown-table';
+import { IFilesResults } from './common';
 
-export const resultFormatter = (files): string => {
-  const table = [];
+export const resultFormatter = (files: IFilesResults): string => {
+  const table: Array<(string | number)[]> = [];
   const header = [
     'File',
     'Lines Δ',
