@@ -28,16 +28,12 @@ export interface IConfigOptions {
   checkCriteria: Array<Criteria>;
 }
 
-export interface IResultFormat {
-  files: {
-    [key: string]: {
-      deltas: {
-        lines: number;
-        functions: number;
-        statements: number;
-        branches: number;
-      };
-      increased: boolean;
-    };
+export interface IFileResultFormat {
+  deltas: {
+    lines: number;
+    functions: number;
+    statements: number;
+    branches: number;
   };
+  decreased: boolean;
 }

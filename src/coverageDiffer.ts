@@ -15,7 +15,11 @@ export const coverageDiffer = (
 
   // Compare head against base for changed/added files.
   headMap.forEach((v, k) => {
-    diffMap.set(k, diffSummary(v, baseMap.get(k)));
+    const fileSummary = baseMap.get(k);
+
+    if (fileSummary) {
+      diffMap.set(k, diffSummary(v, fileSummary));
+    }
   });
 
   return mapToObject(diffMap);

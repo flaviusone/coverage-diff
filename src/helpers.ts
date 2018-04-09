@@ -1,10 +1,14 @@
-export const mapToObject = (map: Map<string, any>) => {
-  let objMap: any = {};
+// Typing this is so complex. Better to inline the code altogether.
+export const mapToObject = <T extends {}>(
+  map: Map<string, T>
+): { [key: string]: T } => {
+  let objMap: { [key: string]: T } = {};
   map.forEach((v, k) => {
     objMap[k] = v;
   });
   return objMap;
 };
 
-export const objectToMap = (obj: object): Map<string, any> =>
-  new Map(Object.entries(obj));
+export const objectToMap = <T extends {}>(obj: {
+  [key: string]: T;
+}): Map<string, T> => new Map(Object.entries(obj));
