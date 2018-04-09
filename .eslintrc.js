@@ -9,5 +9,9 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  parser: 'typescript-eslint-parser'
+  parser: 'typescript-eslint-parser',
+  plugins: ['typescript'],
+  rules: {
+    'typescript/no-unused-vars': 2
+  }
 };

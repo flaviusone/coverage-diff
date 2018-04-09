@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 export interface ICoverageSummary {
   lines: ICoverageInfo;
   statements: ICoverageInfo;

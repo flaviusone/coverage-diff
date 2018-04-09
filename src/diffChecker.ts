@@ -34,7 +34,7 @@ export const diffChecker = (
   checkCriteria: Criteria[]
 ): { files: IFilesResults; regression: boolean } => {
   let regression = false;
-  const diffMap = new Map(Object.entries(diff));
+  const diffMap = objectToMap(diff);
   const percentageMap: Map<string, IFileResultFormat> = new Map();
   const isBelowThreshold = (x: number) => x < 0;
   const nonZeroTest = (x: number) => x !== 0;
