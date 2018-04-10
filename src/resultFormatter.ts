@@ -5,24 +5,24 @@ export const resultFormatter = (files: IFilesResults): string => {
   let noChange = true;
   const table: Array<(string | number)[]> = [];
   const header = [
+    'Ok',
     'File',
-    'Lines Δ',
-    'Branches Δ',
-    'Functions Δ',
-    'Statements Δ',
-    'Ok'
+    'LinesΔ(%)',
+    'BranchesΔ(%)',
+    'FunctionsΔ(%)',
+    'StatementsΔ(%)'
   ];
   table.push(header);
 
   Object.keys(files).forEach(file => {
     const { deltas, decreased } = files[file];
     const row = [
+      decreased ? '🔴' : '✅',
       file,
       deltas.lines,
       deltas.branches,
       deltas.functions,
-      deltas.statements,
-      decreased ? '🔴' : '✅'
+      deltas.statements
     ];
 
     table.push(row);
