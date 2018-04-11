@@ -18,7 +18,11 @@ export const coverageDiffer = (
     const fileSummary = baseMap.get(k);
 
     if (fileSummary) {
+      // Changed file.
       diffMap.set(k, diffSummary(v, fileSummary));
+    } else {
+      // New file.
+      diffMap.set(k, v);
     }
   });
 
