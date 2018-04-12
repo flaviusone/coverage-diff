@@ -16,13 +16,14 @@
     "postpublish": "yarn publish-docs",
     "precommit": "lint-staged",
     "prepublishOnly": "yarn clean && yarn lint && npm test && yarn tsc",
-    "prettier": "prettier --single-quote --list-different './src/**/*.{js,ts}'",
+    "prettier": "prettier --single-quote --list-different '**/*.{js,ts,md}'",
     "publish-docs": "yarn build-docs && gh-pages -d docs -b gh-pages && yarn clean",
     "test": "",
     "tsc": "./node_modules/.bin/tsc"
   },
   "lint-staged": {
-    "*.{js,ts}": ["eslint", "prettier --single-quote --list-different"]
+    "*.{js,ts}": "eslint",
+    "*.{js,ts,md}": "prettier --single-quote --list-different"
   },
   "devDependencies": {
     "@types/node": "9.6.2",
