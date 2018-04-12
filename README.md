@@ -32,9 +32,8 @@ Out:
 | file_1 | 80.2      | 80.2          | ✅  |
 | file_2 | -2        | -2            | 🔴  |
 
-
 API at https://flaviusone.github.io/coverage-diff/globals.html#diff
 
-## Auto-generated docs 
+## Auto-generated docs
 
 https://flaviusone.github.io/coverage-diff/
