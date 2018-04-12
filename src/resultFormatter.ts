@@ -29,5 +29,5 @@ export const resultFormatter = (files: IFilesResults): string => {
     noChange = false;
   });
 
-  return noChange ? 'Nothing changed.' : markdownTable(table);
+  return noChange ? 'Coverage values did not change👌.' : markdownTable(table);
 };
