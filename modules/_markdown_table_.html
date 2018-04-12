@@ -3,17 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>coverage-diff</title>
+	<title>&quot;markdown-table&quot; | coverage-diff</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
 <body>
 <header>
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">coverage-diff</a>
+					<a href="../index.html" class="title">coverage-diff</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -51,132 +51,74 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="globals.html">Globals</a>
+					<a href="../globals.html">Globals</a>
+				</li>
+				<li>
+					<a href="_markdown_table_.html">&quot;markdown-table&quot;</a>
 				</li>
 			</ul>
-			<h1> coverage-diff</h1>
+			<h1>Module &quot;markdown-table&quot;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<h1 id="coverage-diff">coverage-diff</h1>
-				<h2 id="what-it-does">What it does</h2>
-				<ul>
-					<li>Accepts base-summary.json and head-summary.json</li>
-					<li>Diffs the two jsons and outputs info about<ul>
-							<li>Percentage of changed coverage (in changed/added files)</li>
-							<li>Formatted as markdown table</li>
-						</ul>
-					</li>
-					<li>Fail if coverage decreases on a file (check on percentage) for any of the lines/func/statements/branches. Can
-					be configured to only check some criteria.</li>
-					<li>Written in Typescript</li>
-				</ul>
-				<h2 id="usage">Usage</h2>
-				<pre><code class="lang-js"><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
-<span class="hljs-keyword">const</span> coverageDiff = <span class="hljs-built_in">require</span>(<span class="hljs-string">'coverage-diff'</span>);
-
-<span class="hljs-keyword">const</span> base = <span class="hljs-built_in">JSON</span>.parse(fs.readFileSync(<span class="hljs-string">'./base-summary.json'</span>));
-<span class="hljs-keyword">const</span> head = <span class="hljs-built_in">JSON</span>.parse(fs.readFileSync(<span class="hljs-string">'./head-summary.json'</span>));
-<span class="hljs-keyword">const</span> diff = coverageDiff.diff(base, head);
-
-<span class="hljs-built_in">console</span>.log(diff.diff);
-<span class="hljs-built_in">console</span>.log(diff.results);
-<span class="hljs-built_in">console</span>.log(diff.regression);
-</code></pre>
-				<p>Out:</p>
-				<table>
-					<thead>
-						<tr>
-							<th>File</th>
-							<th>LinesΔ(%)</th>
-							<th>FunctionsΔ(%)</th>
-							<th>Ok</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>file_1</td>
-							<td>80.2</td>
-							<td>80.2</td>
-							<td>✅</td>
-						</tr>
-						<tr>
-							<td>file_2</td>
-							<td>-2</td>
-							<td>-2</td>
-							<td>🔴</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="_markdown_table_.html#markdowntable" class="tsd-kind-icon">markdown<wbr>Table</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="markdowntable" class="tsd-anchor"></a>
+					<h3>markdown<wbr>Table</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">markdown<wbr>Table<span class="tsd-signature-symbol">(</span>table<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/54efbd0/typings/markdown-table.d.ts#L2">typings/markdown-table.d.ts:2</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>table: <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
 					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
+						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-module tsd-is-not-exported">
-						<a href="modules/_markdown_table_.html">"markdown-<wbr>table"</a>
+					<li class="current tsd-kind-module tsd-is-not-exported">
+						<a href="_markdown_table_.html">"markdown-<wbr>table"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/iconfigoptions.html" class="tsd-kind-icon">IConfig<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/icoveragediffoutput.html" class="tsd-kind-icon">ICoverage<wbr>Diff<wbr>Output</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/icoverageinfo.html" class="tsd-kind-icon">ICoverage<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/icoveragesummary.html" class="tsd-kind-icon">ICoverage<wbr>Summary</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ifileresultformat.html" class="tsd-kind-icon">IFile<wbr>Result<wbr>Format</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ifilesresults.html" class="tsd-kind-icon">IFiles<wbr>Results</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/ijsonsummary.html" class="tsd-kind-icon">IJson<wbr>Summary</a>
-					</li>
-					<li class=" tsd-kind-type-alias">
-						<a href="globals.html#criteria" class="tsd-kind-icon">Criteria</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#coveragediffer" class="tsd-kind-icon">coverage<wbr>Differ</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#diff" class="tsd-kind-icon">diff</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#diffchecker" class="tsd-kind-icon">diff<wbr>Checker</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#diffinfo" class="tsd-kind-icon">diff<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-function tsd-is-not-exported">
-						<a href="globals.html#diffsummary" class="tsd-kind-icon">diff<wbr>Summary</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#maptoobject" class="tsd-kind-icon">map<wbr>ToObject</a>
-					</li>
-					<li class=" tsd-kind-function tsd-has-type-parameter">
-						<a href="globals.html#objecttomap" class="tsd-kind-icon">object<wbr>ToMap</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#resultformatter" class="tsd-kind-icon">result<wbr>Formatter</a>
-					</li>
-					<li class=" tsd-kind-object-literal tsd-is-not-exported">
-						<a href="globals.html#defaultoptions" class="tsd-kind-icon">default<wbr>Options</a>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="_markdown_table_.html#markdowntable" class="tsd-kind-icon">markdown<wbr>Table</a>
 					</li>
 				</ul>
 			</nav>
@@ -246,7 +188,7 @@
 	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
