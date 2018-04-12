@@ -11,11 +11,11 @@ const defaultOptions: IConfigOptions = {
  * Compares two Istanbul json-summary formatted coverage objects and outputs the
  *   diff between them.
  */
-export default (
+export function diff(
   base: IJsonSummary,
   head: IJsonSummary,
   options: IConfigOptions = defaultOptions
-): ICoverageDiffOutput => {
+): ICoverageDiffOutput {
   const diff = coverageDiffer(base, head);
   const { regression, files } = diffChecker(diff, options.checkCriteria);
   const results = resultFormatter(files);
@@ -25,4 +25,6 @@ export default (
     results,
     regression
   };
-};
+}
+
+export default diff;
