@@ -9,20 +9,26 @@
   "license": "MIT",
   "scripts": {
     "test": "",
+    "build": "yarn tsc",
+    "build-docs": "typedoc --out docs/ src/ typings/",
+    "publish-docs": "yarn build-docs && gh-pages -d docs && yarn clean",
     "tsc": "./node_modules/.bin/tsc",
-    "lint": "npm run eslint && npm run prettier",
+    "lint": "yarn eslint && yarn prettier",
     "eslint": "eslint 'src/**'",
     "prettier": "prettier --single-quote --list-different './src/**/*.{js,ts}'",
-    "prepublishOnly": "npm run clean && npm run lint && npm test && npm run tsc",
-    "clean": "rm -rf lib"
+    "prepublishOnly": "yarn clean && yarn lint && npm test && yarn tsc",
+    "postpublish": "yarn publish-docs",
+    "clean": "rm -rf lib docs"
   },
   "devDependencies": {
     "@types/node": "9.6.2",
     "eslint": "4.19.1",
     "eslint-config-prettier": "2.9.0",
     "eslint-plugin-typescript": "0.11.0",
+    "gh-pages": "1.1.0",
     "jest": "22.4.3",
     "prettier": "1.11.1",
+    "typedoc": "0.11.1",
     "typescript": "2.8.1",
     "typescript-eslint-parser": "14.0.0"
   },
