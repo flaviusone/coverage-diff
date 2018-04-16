@@ -20,6 +20,7 @@
     "publish-docs": "yarn build-docs && gh-pages -d docs -b gh-pages && yarn clean",
     "test": "yarn run tsc && yarn run jest",
     "jest": "jest --maxWorkers=4",
+    "jest-watch": "yarn jest -- --watch",
     "jest-coverage": "yarn jest -- --coverage",
     "tsc": "./node_modules/.bin/tsc"
   },
