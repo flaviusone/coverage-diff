@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`resultFormatter should format files results as markdown table 1`] = `
+"| Ok  | File  | LinesΔ(%) | BranchesΔ(%) | FunctionsΔ(%) | StatementsΔ(%) |
+| --- | ----- | --------- | ------------ | ------------- | -------------- |
+| 🔴  | file1 | 10        | -30          | 20            | -10            |
+| ✅   | file2 | 10        | 30           | 20            | 10             |"
+`;
