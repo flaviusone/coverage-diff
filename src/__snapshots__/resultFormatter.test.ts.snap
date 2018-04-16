@@ -6,3 +6,5 @@ exports[`resultFormatter should format files results as markdown table 1`] = `
 | 🔴  | file1 | 10        | -30          | 20            | -10            |
 | ✅   | file2 | 10        | 30           | 20            | 10             |"
 `;
+
+exports[`resultFormatter should print descriptive message if coverage did't change 1`] = `"Coverage values did not change👌."`;

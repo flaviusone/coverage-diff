@@ -26,4 +26,8 @@ describe('resultFormatter', () => {
   it('should format files results as markdown table', () => {
     expect(resultFormatter(filesResults)).toMatchSnapshot();
   });
+
+  it("should print descriptive message if coverage did't change", () => {
+    expect(resultFormatter({})).toMatchSnapshot();
+  });
 });
