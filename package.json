@@ -8,7 +8,7 @@
   "author": "Flavius Tirnacop <flaviusone@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn tsc",
+    "build": "yarn tsc -- -p tsconfig.build.json",
     "build-docs": "typedoc --out docs/ src/ typings/",
     "clean": "rm -rf lib docs",
     "eslint": "eslint 'src/**'",
