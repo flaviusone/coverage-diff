@@ -8,21 +8,21 @@
   "author": "Flavius Tirnacop <flaviusone@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn tsc -- -p tsconfig.build.json",
+    "build": "./node_modules/.bin/tsc -p tsconfig.build.json",
     "build-docs": "typedoc --out docs/ src/ typings/",
     "clean": "rm -rf lib docs",
     "eslint": "eslint 'src/**'",
     "lint": "yarn eslint && yarn prettier",
     "postpublish": "yarn publish-docs",
     "precommit": "lint-staged",
-    "prepublishOnly": "yarn clean && yarn lint && npm test && yarn tsc",
+    "prepublishOnly": "yarn clean && yarn lint && yarn test && yarn build",
     "prettier": "prettier --single-quote --list-different '**/*.{js,ts,md}'",
     "publish-docs": "yarn build-docs && gh-pages -d docs -b gh-pages && yarn clean",
     "test": "yarn run tsc && yarn run jest",
     "jest": "jest --maxWorkers=4",
     "jest-watch": "yarn jest -- --watch",
     "jest-coverage": "yarn jest -- --coverage",
-    "tsc": "./node_modules/.bin/tsc"
+    "tsc": "./node_modules/.bin/tsc --noEmit"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint",
