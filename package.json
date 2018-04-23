@@ -10,9 +10,9 @@
   "scripts": {
     "build": "./node_modules/.bin/tsc -p tsconfig.build.json",
     "build-docs": "typedoc --out docs/ src/ typings/",
-    "clean": "rm -rf lib docs",
+    "clean": "rm -rf lib docs coverage",
     "eslint": "eslint 'src/**'",
-    "lint": "yarn eslint && yarn prettier",
+    "lint": "yarn clean && yarn eslint && yarn prettier",
     "postpublish": "yarn publish-docs",
     "precommit": "lint-staged",
     "prepublishOnly": "yarn clean && yarn lint && yarn test && yarn build",
