@@ -4,7 +4,7 @@ import {
   fileHalfCovered,
   fileNotCovered,
   newFile
-} from './fixtures.test';
+} from './summaries.fixture';
 
 describe('coverageDiffer', () => {
   describe('file coverage increased ', () => {
