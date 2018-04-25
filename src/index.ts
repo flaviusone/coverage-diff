@@ -3,7 +3,7 @@ import { diffChecker } from './diffChecker';
 import { resultFormatter } from './resultFormatter';
 import { IJsonSummary, ICoverageDiffOutput, IConfigOptions } from './common';
 
-const defaultOptions: IConfigOptions = {
+export const defaultOptions: IConfigOptions = {
   checkCriteria: ['lines', 'branches', 'functions', 'statements']
 };
 

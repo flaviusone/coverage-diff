@@ -16,38 +16,47 @@ const resultFormatterSpy = jest.spyOn(resultFormatter, 'resultFormatter');
 const mockedOptions: IConfigOptions = { checkCriteria: ['lines'] };
 
 describe('diff', () => {
-  let diffOutput: ICoverageDiffOutput;
-  beforeEach(() => {
-    diffOutput = coverageDiff.diff(
-      fileNotCovered,
-      fileFullCovered,
-      mockedOptions
-    );
-  });
+  describe('default options', () => {
+    let diffOutput: ICoverageDiffOutput;
+    beforeEach(() => {
+      diffOutput = coverageDiff.diff(fileNotCovered, fileFullCovered);
+    });
 
-  it('should call the coverageDiffer module', () => {
-    expect(coverageDifferSpy).toHaveBeenCalledWith(
-      fileNotCovered,
-      fileFullCovered
-    );
-  });
+    it('should call the coverageDiffer module', () => {
+      expect(coverageDifferSpy).toHaveBeenCalledWith(
+        fileNotCovered,
+        fileFullCovered
+      );
+    });
 
-  it('should call the diffChecker module', () => {
-    expect(diffCheckerSpy).toHaveBeenCalledWith(
-      'coverageDiffer mock',
-      mockedOptions.checkCriteria
-    );
-  });
+    it('should call the diffChecker module', () => {
+      expect(diffCheckerSpy).toHaveBeenCalledWith(
+        'coverageDiffer mock',
+        coverageDiff.defaultOptions.checkCriteria
+      );
+    });
 
-  it('should call the resultFormatter module', () => {
-    expect(resultFormatterSpy).toHaveBeenCalledWith('foobar');
-  });
+    it('should call the resultFormatter module', () => {
+      expect(resultFormatterSpy).toHaveBeenCalledWith('foobar');
+    });
 
-  it('should return diff info', () => {
-    expect(diffOutput).toEqual({
-      diff: 'coverageDiffer mock',
-      results: 'resultFormatter mock',
-      regression: 'foo'
+    it('should return diff info', () => {
+      expect(diffOutput).toEqual({
+        diff: 'coverageDiffer mock',
+        results: 'resultFormatter mock',
+        regression: 'foo'
+      });
+    });
+  });
+  describe('custom Options', () => {
+    beforeEach(() => {
+      coverageDiff.diff(fileNotCovered, fileFullCovered, mockedOptions);
+    });
+    it('should call the diffChecker module', () => {
+      expect(diffCheckerSpy).toHaveBeenCalledWith(
+        'coverageDiffer mock',
+        mockedOptions.checkCriteria
+      );
     });
   });
 });
