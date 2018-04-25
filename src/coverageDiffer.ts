@@ -36,8 +36,6 @@ const diffSummary = (
   summaryA: ICoverageSummary,
   summaryB: ICoverageSummary
 ): ICoverageSummary => {
-  if (!summaryB) return summaryA; // Empty summary.
-
   return {
     lines: diffInfo(summaryA.lines, summaryB.lines),
     statements: diffInfo(summaryA.statements, summaryB.statements),
