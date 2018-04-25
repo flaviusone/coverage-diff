@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`diffChecker coverage decreased should match snapshot 1`] = `
+Object {
+  "files": Object {
+    "fileA": Object {
+      "decreased": true,
+      "deltas": Object {
+        "branches": -50,
+        "functions": -50,
+        "lines": -50,
+        "statements": -50,
+      },
+    },
+  },
+  "regression": true,
+}
+`;
+
+exports[`diffChecker coverage increased should match snapshot 1`] = `
+Object {
+  "files": Object {
+    "fileA": Object {
+      "decreased": false,
+      "deltas": Object {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100,
+      },
+    },
+  },
+  "regression": false,
+}
+`;
+
+exports[`diffChecker only check lines should match snapshot 1`] = `
+Object {
+  "files": Object {
+    "fileA": Object {
+      "decreased": false,
+      "deltas": Object {
+        "branches": -50,
+        "functions": -50,
+        "lines": 50,
+        "statements": -50,
+      },
+    },
+  },
+  "regression": false,
+}
+`;
+
+exports[`diffChecker skip non changed files should match snapshot 1`] = `
+Object {
+  "files": Object {},
+  "regression": false,
+}
+`;
