@@ -3,6 +3,7 @@ import {
   IJsonSummary,
   IFilesResults,
   IFileResultFormat,
+  ICoverageSummary,
   Criteria
 } from './common';
 /**
@@ -24,17 +25,7 @@ export const diffChecker = (
   diffMap.delete('total');
 
   diffMap.forEach((v, k) => {
-    const { pct: lines } = v.lines;
-    const { pct: statements } = v.statements;
-    const { pct: functions } = v.functions;
-    const { pct: branches } = v.branches;
-
-    const percentages = {
-      lines,
-      statements,
-      functions,
-      branches
-    };
+    const percentages = getSummaryPercentages(v);
 
     const diffCriteria = checkCriteria.map(criteria => percentages[criteria]);
 
@@ -49,10 +40,7 @@ export const diffChecker = (
     if (diffCriteria.some(nonZeroTest)) {
       percentageMap.set(k, {
         deltas: {
-          lines,
-          statements,
-          functions,
-          branches
+          ...percentages
         },
         decreased
       });
@@ -64,3 +52,10 @@ export const diffChecker = (
     regression
   };
 };
+
+const getSummaryPercentages = (summary: ICoverageSummary) => ({
+  lines: summary.lines.pct,
+  statements: summary.statements.pct,
+  functions: summary.functions.pct,
+  branches: summary.branches.pct
+});
