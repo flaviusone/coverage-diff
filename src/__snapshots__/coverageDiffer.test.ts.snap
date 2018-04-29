@@ -28,12 +28,64 @@ Object {
       "total": 0,
     },
   },
+  "total": Object {
+    "branches": Object {
+      "covered": -1,
+      "pct": -50,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": Object {
+      "covered": -1,
+      "pct": -50,
+      "skipped": 0,
+      "total": 0,
+    },
+    "lines": Object {
+      "covered": -1,
+      "pct": -50,
+      "skipped": 0,
+      "total": 0,
+    },
+    "statements": Object {
+      "covered": -1,
+      "pct": -50,
+      "skipped": 0,
+      "total": 0,
+    },
+  },
 }
 `;
 
 exports[`coverageDiffer file coverage increased  should match snapshot 1`] = `
 Object {
   "fileA": Object {
+    "branches": Object {
+      "covered": 1,
+      "pct": 50,
+      "skipped": 0,
+      "total": 0,
+    },
+    "functions": Object {
+      "covered": 1,
+      "pct": 50,
+      "skipped": 0,
+      "total": 0,
+    },
+    "lines": Object {
+      "covered": 1,
+      "pct": 50,
+      "skipped": 0,
+      "total": 0,
+    },
+    "statements": Object {
+      "covered": 1,
+      "pct": 50,
+      "skipped": 0,
+      "total": 0,
+    },
+  },
+  "total": Object {
     "branches": Object {
       "covered": 1,
       "pct": 50,
