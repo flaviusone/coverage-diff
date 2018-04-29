@@ -251,6 +251,7 @@ export const coverageDecreased: IJsonSummary = {
 };
 
 export const onlyLinesIncreased: IJsonSummary = {
+  ...coverageDecreased,
   fileA: {
     ...coverageDecreased.fileA,
     lines: {

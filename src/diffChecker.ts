@@ -9,20 +9,21 @@ import {
 /**
  * Takes a json-summary formatted object (a diff) and checks if per-file
  *   coverage changed (increase/decrease).
- * Returns a pretty-formatted result and regression status.
+ * Returns a structured result and regression status.
  */
 export const diffChecker = (
   diff: IJsonSummary,
   checkCriteria: Criteria[]
-): { files: IFilesResults; regression: boolean } => {
+): {
+  files: IFilesResults;
+  totals: IFileResultFormat | undefined;
+  regression: boolean;
+} => {
   let regression = false;
   const diffMap = objectToMap(diff);
   const percentageMap: Map<string, IFileResultFormat> = new Map();
   const isBelowThreshold = (x: number) => x < 0;
   const nonZeroTest = (x: number) => x !== 0;
-
-  // TODO total will have custom formatting in a future release. Exclude for now.
-  diffMap.delete('total');
 
   diffMap.forEach((v, k) => {
     const percentages = getSummaryPercentages(v);
@@ -47,8 +48,14 @@ export const diffChecker = (
     }
   });
 
+  const totals = percentageMap.get('total');
+
+  // Exclude total from files output.
+  percentageMap.delete('total');
+
   return {
     files: mapToObject(percentageMap),
+    totals,
     regression
   };
 };
