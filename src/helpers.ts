@@ -1,3 +1,5 @@
+import { ICoverageSummary } from './common';
+
 // Typing this is so complex. Better to inline the code altogether.
 export const mapToObject = <T extends {}>(
   map: Map<string, T>
@@ -12,3 +14,10 @@ export const mapToObject = <T extends {}>(
 export const objectToMap = <T extends {}>(obj: {
   [key: string]: T;
 }): Map<string, T> => new Map(Object.entries(obj));
+
+export const getSummaryPercentages = (summary: ICoverageSummary) => ({
+  lines: summary.lines.pct,
+  statements: summary.statements.pct,
+  functions: summary.functions.pct,
+  branches: summary.branches.pct
+});

@@ -1,9 +1,9 @@
 import { objectToMap, mapToObject } from './helpers';
+import { getSummaryPercentages } from './helpers';
 import {
   IJsonSummary,
   IFilesResults,
   IFileResultFormat,
-  ICoverageSummary,
   Criteria
 } from './common';
 /**
@@ -52,10 +52,3 @@ export const diffChecker = (
     regression
   };
 };
-
-const getSummaryPercentages = (summary: ICoverageSummary) => ({
-  lines: summary.lines.pct,
-  statements: summary.statements.pct,
-  functions: summary.functions.pct,
-  branches: summary.branches.pct
-});

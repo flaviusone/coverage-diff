@@ -37,7 +37,10 @@ describe('diff', () => {
     });
 
     it('should call the resultFormatter module', () => {
-      expect(resultFormatterSpy).toHaveBeenCalledWith('foobar');
+      expect(resultFormatterSpy).toHaveBeenCalledWith(
+        'foobar',
+        fileFullCovered.total
+      );
     });
 
     it('should return diff info', () => {

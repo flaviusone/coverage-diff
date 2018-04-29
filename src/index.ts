@@ -18,7 +18,7 @@ export function diff(
 ): ICoverageDiffOutput {
   const diff = coverageDiffer(base, head);
   const { regression, files } = diffChecker(diff, options.checkCriteria);
-  const results = resultFormatter(files);
+  const results = resultFormatter(files, head.total);
 
   return {
     diff,

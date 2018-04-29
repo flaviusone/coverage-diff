@@ -1,5 +1,6 @@
 import { IFilesResults } from './common';
 import { resultFormatter } from './resultFormatter';
+import { fileFullCovered } from './summaries.fixture';
 
 const filesResults: IFilesResults = {
   file1: {
@@ -24,10 +25,12 @@ const filesResults: IFilesResults = {
 
 describe('resultFormatter', () => {
   it('should format files results as markdown table', () => {
-    expect(resultFormatter(filesResults)).toMatchSnapshot();
+    expect(
+      resultFormatter(filesResults, fileFullCovered.total)
+    ).toMatchSnapshot();
   });
 
   it("should print descriptive message if coverage did't change", () => {
-    expect(resultFormatter({})).toMatchSnapshot();
+    expect(resultFormatter({}, fileFullCovered.total)).toMatchSnapshot();
   });
 });

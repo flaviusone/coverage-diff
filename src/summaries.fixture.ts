@@ -129,6 +129,32 @@ export const onlyLinesIncreased: IJsonSummary = {
 };
 
 export const fileFullCovered: IJsonSummary = {
+  total: {
+    lines: {
+      total: 2,
+      covered: 2,
+      skipped: 0,
+      pct: 100
+    },
+    statements: {
+      total: 2,
+      covered: 2,
+      skipped: 0,
+      pct: 100
+    },
+    functions: {
+      total: 2,
+      covered: 2,
+      skipped: 0,
+      pct: 100
+    },
+    branches: {
+      total: 2,
+      covered: 2,
+      skipped: 0,
+      pct: 100
+    }
+  },
   fileA: {
     lines: {
       total: 2,
