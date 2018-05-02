@@ -28,10 +28,10 @@ const formatFilesResults = (files: IFilesResults): string => {
   const header = [
     'Ok',
     'File',
-    'LinesΔ(%)',
-    'BranchesΔ(%)',
-    'FunctionsΔ(%)',
-    'StatementsΔ(%)'
+    'LinesΔ',
+    'BranchesΔ',
+    'FunctionsΔ',
+    'StatementsΔ'
   ];
   table.push(header);
 
@@ -40,10 +40,10 @@ const formatFilesResults = (files: IFilesResults): string => {
     const row = [
       decreased ? '🔴' : '✅',
       file,
-      deltas.lines,
-      deltas.branches,
-      deltas.functions,
-      deltas.statements
+      formatDelta(deltas.lines),
+      formatDelta(deltas.branches),
+      formatDelta(deltas.functions),
+      formatDelta(deltas.statements)
     ];
 
     table.push(row);
@@ -51,4 +51,8 @@ const formatFilesResults = (files: IFilesResults): string => {
   });
 
   return noChange ? 'Coverage values did not change👌.' : markdownTable(table);
+};
+
+const formatDelta = (num: number): string => {
+  return num >= 0 ? `+${num}%` : `${num}%`;
 };
