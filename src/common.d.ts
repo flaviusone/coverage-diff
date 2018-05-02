@@ -42,3 +42,7 @@ export interface IFileResultFormat {
   };
   decreased: boolean;
 }
+
+export interface ITotalResultFormat extends IFileResultFormat {
+  totals: ICoverageSummary;
+}
