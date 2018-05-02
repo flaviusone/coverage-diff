@@ -16,7 +16,7 @@ export const diffChecker = (
   checkCriteria: Criteria[]
 ): {
   files: IFilesResults;
-  totals: IFileResultFormat | undefined;
+  totals: IFileResultFormat;
   regression: boolean;
 } => {
   let regression = false;
@@ -48,7 +48,14 @@ export const diffChecker = (
     }
   });
 
-  const totals = percentageMap.get('total');
+  let totals = percentageMap.get('total');
+
+  if (!totals) {
+    totals = {
+      deltas: { lines: 0, functions: 0, statements: 0, branches: 0 },
+      decreased: false
+    };
+  }
 
   // Exclude total from files output.
   percentageMap.delete('total');
