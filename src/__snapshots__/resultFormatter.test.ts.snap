@@ -8,9 +8,9 @@ exports[`resultFormatter should format files results as markdown table 1`] = `
 
 Total:
 
-| Lines | Branches | Functions | Statements |
-| ----- | -------- | --------- | ---------- |
-| 100%  | 100%     | 100%      | 100%       |"
+| Lines       | Branches    | Functions   | Statements  |
+| ----------- | ----------- | ----------- | ----------- |
+| 100%(+100%) | 100%(+100%) | 100%(+100%) | 100%(+100%) |"
 `;
 
 exports[`resultFormatter should print descriptive message if coverage did't change 1`] = `
@@ -18,7 +18,7 @@ exports[`resultFormatter should print descriptive message if coverage did't chan
 
 Total:
 
-| Lines | Branches | Functions | Statements |
-| ----- | -------- | --------- | ---------- |
-| 100%  | 100%     | 100%      | 100%       |"
+| Lines       | Branches    | Functions   | Statements  |
+| ----------- | ----------- | ----------- | ----------- |
+| 100%(+100%) | 100%(+100%) | 100%(+100%) | 100%(+100%) |"
 `;

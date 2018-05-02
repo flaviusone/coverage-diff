@@ -1,23 +1,34 @@
 import markdownTable from 'markdown-table';
 import { getSummaryPercentages } from './helpers';
-import { IFilesResults, ICoverageSummary } from './common';
+import { IFilesResults, ITotalResultFormat } from './common';
 
 export const resultFormatter = (
   files: IFilesResults,
-  total: ICoverageSummary
+  total: ITotalResultFormat
 ): string => {
   const formattedFiles = formatFilesResults(files);
   const formattedTotal = formatTotal(total);
   return `${formattedFiles}${formattedTotal}`;
 };
 
-const formatTotal = (total: ICoverageSummary): string => {
+const formatTotal = (total: ITotalResultFormat): string => {
   const table: Array<(string | number)[]> = [];
   const { lines, branches, functions, statements } = getSummaryPercentages(
-    total
+    total.totals
   );
+
+  const lDelta = formatDelta(total.deltas.lines);
+  const bDelta = formatDelta(total.deltas.branches);
+  const fDelta = formatDelta(total.deltas.functions);
+  const sDelta = formatDelta(total.deltas.statements);
+
   table.push(['Lines', 'Branches', 'Functions', 'Statements']);
-  table.push([`${lines}%`, `${branches}%`, `${functions}%`, `${statements}%`]);
+  table.push([
+    `${lines}%(${lDelta})`,
+    `${branches}%(${bDelta})`,
+    `${functions}%(${fDelta})`,
+    `${statements}%(${sDelta})`
+  ]);
 
   return '\n\nTotal:\n\n' + markdownTable(table);
 };
