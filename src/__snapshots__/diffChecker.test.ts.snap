@@ -52,6 +52,32 @@ Object {
 }
 `;
 
+exports[`diffChecker no total should match snapshot 1`] = `
+Object {
+  "files": Object {
+    "fileA": Object {
+      "decreased": false,
+      "deltas": Object {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100,
+      },
+    },
+  },
+  "regression": false,
+  "totals": Object {
+    "decreased": false,
+    "deltas": Object {
+      "branches": 0,
+      "functions": 0,
+      "lines": 0,
+      "statements": 0,
+    },
+  },
+}
+`;
+
 exports[`diffChecker only check lines should match snapshot 1`] = `
 Object {
   "files": Object {

@@ -3,7 +3,8 @@ import {
   fileFullCovered,
   coverageDecreased,
   onlyLinesIncreased,
-  coverageNotChanged
+  coverageNotChanged,
+  noTotal
 } from './summaries.fixture';
 import { Criteria } from './common';
 
@@ -18,6 +19,11 @@ describe('diffChecker', () => {
   describe('coverage increased', () => {
     it('should match snapshot', () => {
       expect(diffChecker(fileFullCovered, checkCriteria)).toMatchSnapshot();
+    });
+  });
+  describe('no total', () => {
+    it('should match snapshot', () => {
+      expect(diffChecker(noTotal, checkCriteria)).toMatchSnapshot();
     });
   });
   describe('coverage decreased', () => {
