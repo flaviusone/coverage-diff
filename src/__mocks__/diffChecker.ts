@@ -1,4 +1,5 @@
 export const diffChecker = () => ({
-  regression: 'foo',
-  files: 'foobar'
+  regression: 'mockedRegression',
+  files: 'mockedFiles',
+  totals: { deltas: 'mockedTotals' }
 });

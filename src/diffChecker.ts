@@ -1,4 +1,5 @@
 import { objectToMap, mapToObject } from './helpers';
+import { getSummaryPercentages } from './helpers';
 import {
   IJsonSummary,
   IFilesResults,
@@ -8,33 +9,24 @@ import {
 /**
  * Takes a json-summary formatted object (a diff) and checks if per-file
  *   coverage changed (increase/decrease).
- * Returns a pretty-formatted result and regression status.
+ * Returns a structured result and regression status.
  */
 export const diffChecker = (
   diff: IJsonSummary,
   checkCriteria: Criteria[]
-): { files: IFilesResults; regression: boolean } => {
+): {
+  files: IFilesResults;
+  totals: IFileResultFormat;
+  regression: boolean;
+} => {
   let regression = false;
   const diffMap = objectToMap(diff);
   const percentageMap: Map<string, IFileResultFormat> = new Map();
   const isBelowThreshold = (x: number) => x < 0;
   const nonZeroTest = (x: number) => x !== 0;
 
-  // TODO total will have custom formatting in a future release. Exclude for now.
-  diffMap.delete('total');
-
   diffMap.forEach((v, k) => {
-    const { pct: lines } = v.lines;
-    const { pct: statements } = v.statements;
-    const { pct: functions } = v.functions;
-    const { pct: branches } = v.branches;
-
-    const percentages = {
-      lines,
-      statements,
-      functions,
-      branches
-    };
+    const percentages = getSummaryPercentages(v);
 
     const diffCriteria = checkCriteria.map(criteria => percentages[criteria]);
 
@@ -49,18 +41,28 @@ export const diffChecker = (
     if (diffCriteria.some(nonZeroTest)) {
       percentageMap.set(k, {
         deltas: {
-          lines,
-          statements,
-          functions,
-          branches
+          ...percentages
         },
         decreased
       });
     }
   });
 
+  let totals = percentageMap.get('total');
+
+  if (!totals) {
+    totals = {
+      deltas: { lines: 0, functions: 0, statements: 0, branches: 0 },
+      decreased: false
+    };
+  }
+
+  // Exclude total from files output.
+  percentageMap.delete('total');
+
   return {
     files: mapToObject(percentageMap),
+    totals,
     regression
   };
 };

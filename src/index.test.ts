@@ -37,14 +37,17 @@ describe('diff', () => {
     });
 
     it('should call the resultFormatter module', () => {
-      expect(resultFormatterSpy).toHaveBeenCalledWith('foobar');
+      expect(resultFormatterSpy).toHaveBeenCalledWith('mockedFiles', {
+        totals: fileFullCovered.total,
+        deltas: 'mockedTotals'
+      });
     });
 
     it('should return diff info', () => {
       expect(diffOutput).toEqual({
         diff: 'coverageDiffer mock',
         results: 'resultFormatter mock',
-        regression: 'foo'
+        regression: 'mockedRegression'
       });
     });
   });

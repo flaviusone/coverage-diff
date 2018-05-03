@@ -14,6 +14,15 @@ Object {
     },
   },
   "regression": true,
+  "totals": Object {
+    "decreased": false,
+    "deltas": Object {
+      "branches": 50,
+      "functions": 50,
+      "lines": 50,
+      "statements": 50,
+    },
+  },
 }
 `;
 
@@ -31,6 +40,41 @@ Object {
     },
   },
   "regression": false,
+  "totals": Object {
+    "decreased": false,
+    "deltas": Object {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100,
+    },
+  },
+}
+`;
+
+exports[`diffChecker no total should match snapshot 1`] = `
+Object {
+  "files": Object {
+    "fileA": Object {
+      "decreased": false,
+      "deltas": Object {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100,
+      },
+    },
+  },
+  "regression": false,
+  "totals": Object {
+    "decreased": false,
+    "deltas": Object {
+      "branches": 0,
+      "functions": 0,
+      "lines": 0,
+      "statements": 0,
+    },
+  },
 }
 `;
 
@@ -48,6 +92,15 @@ Object {
     },
   },
   "regression": false,
+  "totals": Object {
+    "decreased": false,
+    "deltas": Object {
+      "branches": 50,
+      "functions": 50,
+      "lines": 50,
+      "statements": 50,
+    },
+  },
 }
 `;
 
@@ -55,5 +108,14 @@ exports[`diffChecker skip non changed files should match snapshot 1`] = `
 Object {
   "files": Object {},
   "regression": false,
+  "totals": Object {
+    "decreased": false,
+    "deltas": Object {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100,
+    },
+  },
 }
 `;

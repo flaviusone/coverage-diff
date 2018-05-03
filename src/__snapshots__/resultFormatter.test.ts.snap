@@ -1,10 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`resultFormatter should format files results as markdown table 1`] = `
-"| Ok  | File  | LinesΔ(%) | BranchesΔ(%) | FunctionsΔ(%) | StatementsΔ(%) |
-| --- | ----- | --------- | ------------ | ------------- | -------------- |
-| 🔴  | file1 | 10        | -30          | 20            | -10            |
-| ✅   | file2 | 10        | 30           | 20            | 10             |"
+"| Ok  | File  | LinesΔ | BranchesΔ | FunctionsΔ | StatementsΔ |
+| --- | ----- | ------ | --------- | ---------- | ----------- |
+| 🔴  | file1 | +10%   | -30%      | +20%       | -10%        |
+| ✅   | file2 | +10%   | +30%      | +20%       | +10%        |
+
+Total:
+
+| Lines       | Branches    | Functions   | Statements  |
+| ----------- | ----------- | ----------- | ----------- |
+| 100%(+100%) | 100%(+100%) | 100%(+100%) | 100%(+100%) |"
 `;
 
-exports[`resultFormatter should print descriptive message if coverage did't change 1`] = `"Coverage values did not change👌."`;
+exports[`resultFormatter should print descriptive message if coverage did't change 1`] = `
+"Coverage values did not change👌.
+
+Total:
+
+| Lines       | Branches    | Functions   | Statements  |
+| ----------- | ----------- | ----------- | ----------- |
+| 100%(+100%) | 100%(+100%) | 100%(+100%) | 100%(+100%) |"
+`;
