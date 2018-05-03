@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IConfigOptions | coverage-diff</title>
+	<title>ITotalResultFormat | coverage-diff</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="iconfigoptions.html">IConfigOptions</a>
+					<a href="itotalresultformat.html">ITotalResultFormat</a>
 				</li>
 			</ul>
-			<h1>Interface IConfigOptions</h1>
+			<h1>Interface ITotalResultFormat</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IConfigOptions</span>
+						<a href="ifileresultformat.html" class="tsd-signature-type">IFileResultFormat</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">ITotalResultFormat</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -79,7 +84,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iconfigoptions.html#checkcriteria" class="tsd-kind-icon">check<wbr>Criteria</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="itotalresultformat.html#decreased" class="tsd-kind-icon">decreased</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="itotalresultformat.html#deltas" class="tsd-kind-icon">deltas</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="itotalresultformat.html#totals" class="tsd-kind-icon">totals</a></li>
 							</ul>
 						</section>
 					</div>
@@ -87,13 +94,52 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="decreased" class="tsd-anchor"></a>
+					<h3>decreased</h3>
+					<div class="tsd-signature tsd-kind-icon">decreased<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="ifileresultformat.html">IFileResultFormat</a>.<a href="ifileresultformat.html#decreased">decreased</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/3e8fbcd/src/common.d.ts#L43">src/common.d.ts:43</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="deltas" class="tsd-anchor"></a>
+					<h3>deltas</h3>
+					<div class="tsd-signature tsd-kind-icon">deltas<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="ifileresultformat.html">IFileResultFormat</a>.<a href="ifileresultformat.html#deltas">deltas</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/3e8fbcd/src/common.d.ts#L37">src/common.d.ts:37</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>branches<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>functions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>lines<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>statements<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="checkcriteria" class="tsd-anchor"></a>
-					<h3>check<wbr>Criteria</h3>
-					<div class="tsd-signature tsd-kind-icon">check<wbr>Criteria<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#criteria" class="tsd-signature-type">Criteria</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="totals" class="tsd-anchor"></a>
+					<h3>totals</h3>
+					<div class="tsd-signature tsd-kind-icon">totals<span class="tsd-signature-symbol">:</span> <a href="icoveragesummary.html" class="tsd-signature-type">ICoverageSummary</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/3e8fbcd/src/common.d.ts#L29">src/common.d.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/3e8fbcd/src/common.d.ts#L47">src/common.d.ts:47</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -109,18 +155,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="iconfigoptions.html" class="tsd-kind-icon">IConfig<wbr>Options</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iconfigoptions.html#checkcriteria" class="tsd-kind-icon">check<wbr>Criteria</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="icoveragediffoutput.html" class="tsd-kind-icon">ICoverage<wbr>Diff<wbr>Output</a>
 					</li>
@@ -139,9 +176,24 @@
 					<li class=" tsd-kind-interface">
 						<a href="ijsonsummary.html" class="tsd-kind-icon">IJson<wbr>Summary</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="itotalresultformat.html" class="tsd-kind-icon">ITotal<wbr>Result<wbr>Format</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="itotalresultformat.html#decreased" class="tsd-kind-icon">decreased</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="itotalresultformat.html#deltas" class="tsd-kind-icon">deltas</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="itotalresultformat.html#totals" class="tsd-kind-icon">totals</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-type-alias">
 						<a href="../globals.html#criteria" class="tsd-kind-icon">Criteria</a>
 					</li>
