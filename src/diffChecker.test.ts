@@ -4,6 +4,7 @@ import {
   coverageDecreased,
   onlyLinesIncreased,
   coverageNotChanged,
+  totalDecreased,
   noTotal
 } from './summaries.fixture';
 import { Criteria } from './common';
@@ -39,6 +40,11 @@ describe('diffChecker', () => {
   describe('only check lines', () => {
     it('should match snapshot', () => {
       expect(diffChecker(onlyLinesIncreased, ['lines'])).toMatchSnapshot();
+    });
+  });
+  describe('total decreased', () => {
+    it('should not regress', () => {
+      expect(diffChecker(totalDecreased, checkCriteria).regression).toBe(false);
     });
   });
 });

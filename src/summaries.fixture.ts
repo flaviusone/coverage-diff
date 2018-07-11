@@ -250,6 +250,36 @@ export const coverageDecreased: IJsonSummary = {
   }
 };
 
+export const totalDecreased: IJsonSummary = {
+  ...coverageNotChanged,
+  total: {
+    lines: {
+      total: 2,
+      covered: 1,
+      skipped: 0,
+      pct: -50
+    },
+    statements: {
+      total: 2,
+      covered: 1,
+      skipped: 0,
+      pct: -50
+    },
+    functions: {
+      total: 2,
+      covered: 1,
+      skipped: 0,
+      pct: -50
+    },
+    branches: {
+      total: 2,
+      covered: 1,
+      skipped: 0,
+      pct: -50
+    }
+  }
+};
+
 export const noTotal: IJsonSummary = {
   fileA: {
     lines: {

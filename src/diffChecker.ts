@@ -33,7 +33,7 @@ export const diffChecker = (
     const decreased = diffCriteria.some(isBelowThreshold);
 
     // Coverage decreased on a file. Set regression flag true.
-    if (decreased) {
+    if (decreased && k !== 'total') {
       regression = true;
     }
 
