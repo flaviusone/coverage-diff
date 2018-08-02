@@ -13,7 +13,10 @@ import { fileNotCovered, fileFullCovered } from './summaries.fixture';
 const coverageDifferSpy = jest.spyOn(coverageDiffer, 'coverageDiffer');
 const diffCheckerSpy = jest.spyOn(diffChecker, 'diffChecker');
 const resultFormatterSpy = jest.spyOn(resultFormatter, 'resultFormatter');
-const mockedOptions: IConfigOptions = { checkCriteria: ['lines'] };
+const mockedOptions: IConfigOptions = {
+  checkCriteria: ['lines'],
+  coverageThreshold: 100
+};
 
 describe('diff', () => {
   describe('default options', () => {
@@ -31,8 +34,10 @@ describe('diff', () => {
 
     it('should call the diffChecker module', () => {
       expect(diffCheckerSpy).toHaveBeenCalledWith(
+        fileFullCovered,
         'coverageDiffer mock',
-        coverageDiff.defaultOptions.checkCriteria
+        coverageDiff.defaultOptions.checkCriteria,
+        coverageDiff.defaultOptions.coverageThreshold
       );
     });
 
@@ -57,8 +62,10 @@ describe('diff', () => {
     });
     it('should call the diffChecker module', () => {
       expect(diffCheckerSpy).toHaveBeenCalledWith(
+        fileFullCovered,
         'coverageDiffer mock',
-        mockedOptions.checkCriteria
+        mockedOptions.checkCriteria,
+        mockedOptions.coverageThreshold
       );
     });
   });

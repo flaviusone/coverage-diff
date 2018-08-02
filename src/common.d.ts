@@ -26,7 +26,18 @@ export interface ICoverageDiffOutput {
 export type Criteria = 'lines' | 'branches' | 'functions' | 'statements';
 
 export interface IConfigOptions {
-  checkCriteria: Array<Criteria>;
+  checkCriteria?: Array<Criteria>;
+  /* Fail coverage check if per-file coverage is lower */
+  coverageThreshold?: number;
+  /* Fail coverage check if per-file coverage decrease is lower */
+  coverageDecreaseTreshold?: number;
+}
+
+export interface IDiffCheckResults {
+  files: IFilesResults;
+  totals: IFileResultFormat;
+  diff: IJsonSummary;
+  regression: boolean;
 }
 
 export interface IFilesResults {

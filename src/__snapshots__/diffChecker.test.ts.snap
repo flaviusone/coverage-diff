@@ -1,10 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`diffChecker coverage decreased should match snapshot 1`] = `
+exports[`diffChecker coverage decreased over total treshold should match snapshot 1`] = `
 Object {
+  "diff": Object {
+    "fileA": Object {
+      "branches": Object {
+        "covered": -1,
+        "pct": -50,
+        "skipped": 0,
+        "total": 0,
+      },
+      "functions": Object {
+        "covered": -1,
+        "pct": -50,
+        "skipped": 0,
+        "total": 0,
+      },
+      "lines": Object {
+        "covered": -1,
+        "pct": -50,
+        "skipped": 0,
+        "total": 0,
+      },
+      "statements": Object {
+        "covered": -1,
+        "pct": -50,
+        "skipped": 0,
+        "total": 0,
+      },
+    },
+    "total": Object {
+      "branches": Object {
+        "covered": -1,
+        "pct": -50,
+        "skipped": 0,
+        "total": 0,
+      },
+      "functions": Object {
+        "covered": -1,
+        "pct": -50,
+        "skipped": 0,
+        "total": 0,
+      },
+      "lines": Object {
+        "covered": -1,
+        "pct": -50,
+        "skipped": 0,
+        "total": 0,
+      },
+      "statements": Object {
+        "covered": -1,
+        "pct": -50,
+        "skipped": 0,
+        "total": 0,
+      },
+    },
+  },
   "files": Object {
     "fileA": Object {
-      "decreased": true,
+      "decreased": false,
       "deltas": Object {
         "branches": -50,
         "functions": -50,
@@ -13,14 +67,94 @@ Object {
       },
     },
   },
-  "regression": true,
+  "regression": false,
   "totals": Object {
     "decreased": false,
     "deltas": Object {
-      "branches": 50,
-      "functions": 50,
-      "lines": 50,
-      "statements": 50,
+      "branches": -50,
+      "functions": -50,
+      "lines": -50,
+      "statements": -50,
+    },
+  },
+}
+`;
+
+exports[`diffChecker coverage decreased should match snapshot 1`] = `
+Object {
+  "diff": Object {
+    "fileA": Object {
+      "branches": Object {
+        "covered": -2,
+        "pct": -100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "functions": Object {
+        "covered": -2,
+        "pct": -100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "lines": Object {
+        "covered": -2,
+        "pct": -100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "statements": Object {
+        "covered": -2,
+        "pct": -100,
+        "skipped": 0,
+        "total": 0,
+      },
+    },
+    "total": Object {
+      "branches": Object {
+        "covered": -2,
+        "pct": -100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "functions": Object {
+        "covered": -2,
+        "pct": -100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "lines": Object {
+        "covered": -2,
+        "pct": -100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "statements": Object {
+        "covered": -2,
+        "pct": -100,
+        "skipped": 0,
+        "total": 0,
+      },
+    },
+  },
+  "files": Object {
+    "fileA": Object {
+      "decreased": true,
+      "deltas": Object {
+        "branches": -100,
+        "functions": -100,
+        "lines": -100,
+        "statements": -100,
+      },
+    },
+  },
+  "regression": true,
+  "totals": Object {
+    "decreased": true,
+    "deltas": Object {
+      "branches": -100,
+      "functions": -100,
+      "lines": -100,
+      "statements": -100,
     },
   },
 }
@@ -28,6 +162,60 @@ Object {
 
 exports[`diffChecker coverage increased should match snapshot 1`] = `
 Object {
+  "diff": Object {
+    "fileA": Object {
+      "branches": Object {
+        "covered": 2,
+        "pct": 100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "functions": Object {
+        "covered": 2,
+        "pct": 100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "lines": Object {
+        "covered": 2,
+        "pct": 100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "statements": Object {
+        "covered": 2,
+        "pct": 100,
+        "skipped": 0,
+        "total": 0,
+      },
+    },
+    "total": Object {
+      "branches": Object {
+        "covered": 2,
+        "pct": 100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "functions": Object {
+        "covered": 2,
+        "pct": 100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "lines": Object {
+        "covered": 2,
+        "pct": 100,
+        "skipped": 0,
+        "total": 0,
+      },
+      "statements": Object {
+        "covered": 2,
+        "pct": 100,
+        "skipped": 0,
+        "total": 0,
+      },
+    },
+  },
   "files": Object {
     "fileA": Object {
       "decreased": false,
@@ -52,16 +240,70 @@ Object {
 }
 `;
 
-exports[`diffChecker no total should match snapshot 1`] = `
+exports[`diffChecker only check lines should match snapshot 1`] = `
 Object {
+  "diff": Object {
+    "fileA": Object {
+      "branches": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "functions": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "lines": Object {
+        "covered": 1,
+        "pct": 50,
+        "skipped": 0,
+        "total": 0,
+      },
+      "statements": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+    },
+    "total": Object {
+      "branches": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "functions": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "lines": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "statements": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+    },
+  },
   "files": Object {
     "fileA": Object {
       "decreased": false,
       "deltas": Object {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100,
+        "branches": 0,
+        "functions": 0,
+        "lines": 50,
+        "statements": 0,
       },
     },
   },
@@ -78,43 +320,71 @@ Object {
 }
 `;
 
-exports[`diffChecker only check lines should match snapshot 1`] = `
+exports[`diffChecker skip non changed files should match snapshot 1`] = `
 Object {
-  "files": Object {
+  "diff": Object {
     "fileA": Object {
-      "decreased": false,
-      "deltas": Object {
-        "branches": -50,
-        "functions": -50,
-        "lines": 50,
-        "statements": -50,
+      "branches": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "functions": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "lines": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "statements": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+    },
+    "total": Object {
+      "branches": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "functions": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "lines": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
+      },
+      "statements": Object {
+        "covered": 0,
+        "pct": 0,
+        "skipped": 0,
+        "total": 0,
       },
     },
   },
-  "regression": false,
-  "totals": Object {
-    "decreased": false,
-    "deltas": Object {
-      "branches": 50,
-      "functions": 50,
-      "lines": 50,
-      "statements": 50,
-    },
-  },
-}
-`;
-
-exports[`diffChecker skip non changed files should match snapshot 1`] = `
-Object {
   "files": Object {},
   "regression": false,
   "totals": Object {
     "decreased": false,
     "deltas": Object {
-      "branches": 100,
-      "functions": 100,
-      "lines": 100,
-      "statements": 100,
+      "branches": 0,
+      "functions": 0,
+      "lines": 0,
+      "statements": 0,
     },
   },
 }

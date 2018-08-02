@@ -2,12 +2,7 @@ import { coverageDiffer } from './coverageDiffer';
 import { objectToMap, mapToObject } from './helpers';
 import { getSummaryPercentages } from './helpers';
 import { defaultOptions } from './index';
-import {
-  IJsonSummary,
-  IFilesResults,
-  IFileResultFormat,
-  Criteria
-} from './common';
+import { IJsonSummary, IFileResultFormat, IDiffCheckResults } from './common';
 /**
  * Takes a json-summary formatted object (a diff) and checks if per-file
  *   coverage changed (increase/decrease).
@@ -16,29 +11,36 @@ import {
 export const diffChecker = (
   base: IJsonSummary,
   head: IJsonSummary,
-  checkCriteria: Criteria[] = defaultOptions.checkCriteria!,
-): {
-  files: IFilesResults;
-  totals: IFileResultFormat;
-  diff: IJsonSummary;
-  regression: boolean;
-} => {
+  checkCriteria = defaultOptions.checkCriteria!,
+  coverageThreshold = defaultOptions.coverageThreshold!,
+  coverageDecreaseTreshold = defaultOptions.coverageDecreaseTreshold!
+): IDiffCheckResults => {
   let regression = false;
   const diff = coverageDiffer(base, head);
   const diffMap = objectToMap(diff);
   const percentageMap: Map<string, IFileResultFormat> = new Map();
-  const coverageDecreased = (x: number) => x < 0;
   const nonZeroTest = (x: number) => x !== 0;
+  const coverageDecreased = (x: number) =>
+    x < 0 ? Math.abs(x) >= coverageDecreaseTreshold : false;
+  const isBelowTreshold = (x: number) => x < coverageThreshold;
 
   diffMap.forEach((v, k) => {
-    const percentages = getSummaryPercentages(v);
+    const diffPercentages = getSummaryPercentages(v);
+    const headPercentages = getSummaryPercentages(head[k]);
 
-    const diffCriteria = checkCriteria.map(criteria => percentages[criteria]);
+    const diffCriteria = checkCriteria.map(
+      criteria => diffPercentages[criteria]
+    );
 
-    const decreased = diffCriteria.some(isBelowThreshold);
+    const tresholdCriteria = checkCriteria.map(
+      criteria => headPercentages[criteria]
+    );
 
-    // Coverage decreased on a file. Set regression flag true.
-    if (decreased && k !== 'total') {
+    const decreased = diffCriteria.some(coverageDecreased);
+    const belowTreshold = tresholdCriteria.some(isBelowTreshold);
+
+    // Coverage decreased on a file or under treshold. Set regression flag true.
+    if ((decreased || belowTreshold) && k !== 'total') {
       regression = true;
     }
 
@@ -46,7 +48,7 @@ export const diffChecker = (
     if (diffCriteria.some(nonZeroTest)) {
       percentageMap.set(k, {
         deltas: {
-          ...percentages
+          ...diffPercentages
         },
         decreased
       });

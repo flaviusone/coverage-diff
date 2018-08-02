@@ -9,7 +9,8 @@ import {
 
 export const defaultOptions: IConfigOptions = {
   checkCriteria: ['lines', 'branches', 'functions', 'statements'],
-  coverageThreshold: 1
+  coverageThreshold: 100,
+  coverageDecreaseTreshold: 0
 };
 
 /**
