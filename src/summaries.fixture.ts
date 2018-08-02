@@ -55,6 +55,62 @@ export const fileFullCovered: IJsonSummary = {
   }
 };
 
+export const fileFullCoveredfileHalfCovered: IJsonSummary = {
+  ...fileFullCovered,
+  fileB: {
+    lines: {
+      total: 2,
+      covered: 1,
+      skipped: 0,
+      pct: 50
+    },
+    statements: {
+      total: 2,
+      covered: 1,
+      skipped: 0,
+      pct: 50
+    },
+    functions: {
+      total: 2,
+      covered: 1,
+      skipped: 0,
+      pct: 50
+    },
+    branches: {
+      total: 2,
+      covered: 1,
+      skipped: 0,
+      pct: 50
+    }
+  },
+  total: {
+    lines: {
+      total: 4,
+      covered: 3,
+      skipped: 0,
+      pct: 75
+    },
+    statements: {
+      total: 4,
+      covered: 3,
+      skipped: 0,
+      pct: 75
+    },
+    functions: {
+      total: 4,
+      covered: 3,
+      skipped: 0,
+      pct: 75
+    },
+    branches: {
+      total: 4,
+      covered: 3,
+      skipped: 0,
+      pct: 75
+    }
+  }
+};
+
 export const fileNotCovered: IJsonSummary = {
   total: {
     lines: {
@@ -280,44 +336,15 @@ export const totalDecreased: IJsonSummary = {
   }
 };
 
-export const noTotal: IJsonSummary = {
-  fileA: {
-    lines: {
-      total: 2,
-      covered: 2,
-      skipped: 0,
-      pct: 100
-    },
-    statements: {
-      total: 2,
-      covered: 2,
-      skipped: 0,
-      pct: 100
-    },
-    functions: {
-      total: 2,
-      covered: 2,
-      skipped: 0,
-      pct: 100
-    },
-    branches: {
-      total: 2,
-      covered: 2,
-      skipped: 0,
-      pct: 100
-    }
-  }
-};
-
 export const onlyLinesIncreased: IJsonSummary = {
-  ...coverageDecreased,
+  ...fileHalfCovered,
   fileA: {
-    ...coverageDecreased.fileA,
+    ...fileHalfCovered.fileA,
     lines: {
-      total: 0,
-      covered: 1,
+      total: 2,
+      covered: 2,
       skipped: 0,
-      pct: 50
+      pct: 100
     }
   }
 };
