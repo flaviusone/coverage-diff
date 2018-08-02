@@ -1,5 +1,7 @@
+import { coverageDiffer } from './coverageDiffer';
 import { objectToMap, mapToObject } from './helpers';
 import { getSummaryPercentages } from './helpers';
+import { defaultOptions } from './index';
 import {
   IJsonSummary,
   IFilesResults,
@@ -12,17 +14,20 @@ import {
  * Returns a structured result and regression status.
  */
 export const diffChecker = (
-  diff: IJsonSummary,
-  checkCriteria: Criteria[]
+  base: IJsonSummary,
+  head: IJsonSummary,
+  checkCriteria: Criteria[] = defaultOptions.checkCriteria!,
 ): {
   files: IFilesResults;
   totals: IFileResultFormat;
+  diff: IJsonSummary;
   regression: boolean;
 } => {
   let regression = false;
+  const diff = coverageDiffer(base, head);
   const diffMap = objectToMap(diff);
   const percentageMap: Map<string, IFileResultFormat> = new Map();
-  const isBelowThreshold = (x: number) => x < 0;
+  const coverageDecreased = (x: number) => x < 0;
   const nonZeroTest = (x: number) => x !== 0;
 
   diffMap.forEach((v, k) => {
@@ -60,9 +65,5 @@ export const diffChecker = (
   // Exclude total from files output.
   percentageMap.delete('total');
 
-  return {
-    files: mapToObject(percentageMap),
-    totals,
-    regression
-  };
+  return { files: mapToObject(percentageMap), diff, totals, regression };
 };
