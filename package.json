@@ -1,7 +1,8 @@
 {
   "name": "coverage-diff",
   "version": "1.4.1",
-  "description": "Reports differences between two istanbul JSON code coverage summaries.",
+  "description":
+    "Reports differences between two istanbul JSON code coverage summaries.",
   "main": "lib/index",
   "types": "lib/index",
   "repository": "git@github.com:flaviusone/coverage-diff.git",
@@ -17,12 +18,13 @@
     "precommit": "lint-staged",
     "prepublishOnly": "yarn clean && yarn lint && yarn test && yarn build",
     "prettier": "prettier --single-quote --list-different '**/*.{js,ts,md}'",
-    "publish-docs": "yarn build-docs && gh-pages -d docs -b gh-pages && yarn clean",
+    "publish-docs":
+      "yarn build-docs && gh-pages -d docs -b gh-pages && yarn clean",
     "test": "yarn run tsc && yarn run jest",
     "jest": "jest --maxWorkers=4",
     "jest-watch": "yarn jest --watch",
     "jest-coverage": "yarn jest --coverage",
-    "tsc": "./node_modules/.bin/tsc --noEmit"
+    "tsc": "./node_modules/.bin/tsc --noEmit --pretty"
   },
   "lint-staged": {
     "*.{js,ts}": "eslint",

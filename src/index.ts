@@ -1,4 +1,3 @@
-import { coverageDiffer } from './coverageDiffer';
 import { diffChecker } from './diffChecker';
 import { resultFormatter } from './resultFormatter';
 import {
@@ -9,7 +8,9 @@ import {
 } from './common';
 
 export const defaultOptions: IConfigOptions = {
-  checkCriteria: ['lines', 'branches', 'functions', 'statements']
+  checkCriteria: ['lines', 'branches', 'functions', 'statements'],
+  coverageThreshold: 100,
+  coverageDecreaseTreshold: 0
 };
 
 /**
@@ -19,13 +20,22 @@ export const defaultOptions: IConfigOptions = {
 export function diff(
   base: IJsonSummary,
   head: IJsonSummary,
-  options: IConfigOptions = defaultOptions
+  options = defaultOptions
 ): ICoverageDiffOutput {
-  const diff = coverageDiffer(base, head);
-  const { regression, files, totals } = diffChecker(
-    diff,
-    options.checkCriteria
+  const {
+    checkCriteria,
+    coverageThreshold,
+    coverageDecreaseTreshold
+  } = options;
+
+  const { regression, files, totals, diff } = diffChecker(
+    base,
+    head,
+    checkCriteria,
+    coverageThreshold,
+    coverageDecreaseTreshold
   );
+
   const totalResults: ITotalResultFormat = {
     totals: head.total,
     ...totals
