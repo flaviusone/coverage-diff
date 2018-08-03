@@ -2,7 +2,13 @@ import { coverageDiffer } from './coverageDiffer';
 import { objectToMap, mapToObject } from './helpers';
 import { getSummaryPercentages } from './helpers';
 import { defaultOptions } from './index';
-import { IJsonSummary, IFileResultFormat, IDiffCheckResults } from './common';
+import {
+  IJsonSummary,
+  IFileResultFormat,
+  IDiffCheckResults,
+  ICoverageSummary,
+  Criteria
+} from './common';
 /**
  * Takes a json-summary formatted object (a diff) and checks if per-file
  *   coverage changed (increase/decrease).
@@ -26,26 +32,26 @@ export const diffChecker = (
 
   diffMap.forEach((v, k) => {
     const diffPercentages = getSummaryPercentages(v);
-    const headPercentages = getSummaryPercentages(head[k]);
 
-    const diffCriteria = checkCriteria.map(
-      criteria => diffPercentages[criteria]
-    );
+    // Only check files that changed coverage.
+    if (Object.values(diffPercentages).some(nonZeroTest)) {
+      const decreased = checkCoverageForCondition(
+        v,
+        checkCriteria,
+        coverageDecreased
+      );
+      const belowTreshold = checkCoverageForCondition(
+        head[k],
+        checkCriteria,
+        isBelowTreshold
+      );
 
-    const tresholdCriteria = checkCriteria.map(
-      criteria => headPercentages[criteria]
-    );
+      // Coverage decreased on a file or under treshold, regress.
+      // Ignore the total field as we check only files.
+      if ((decreased || belowTreshold) && k !== 'total') {
+        regression = true;
+      }
 
-    const decreased = diffCriteria.some(coverageDecreased);
-    const belowTreshold = tresholdCriteria.some(isBelowTreshold);
-
-    // Coverage decreased on a file or under treshold. Set regression flag true.
-    if ((decreased || belowTreshold) && k !== 'total') {
-      regression = true;
-    }
-
-    // Skip unchanged files.
-    if (diffCriteria.some(nonZeroTest)) {
       percentageMap.set(k, {
         deltas: {
           ...diffPercentages
@@ -68,4 +74,16 @@ export const diffChecker = (
   percentageMap.delete('total');
 
   return { files: mapToObject(percentageMap), diff, totals, regression };
+};
+
+const checkCoverageForCondition = (
+  coverage: ICoverageSummary,
+  checkCriteria: Criteria[],
+  condition: (x: number) => boolean
+) => {
+  const diffPercentages = getSummaryPercentages(coverage);
+
+  const values = checkCriteria.map(criteria => diffPercentages[criteria]);
+
+  return values.some(condition);
 };
