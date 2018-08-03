@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ICoverageDiffOutput | coverage-diff</title>
+	<title>IDiffCheckResults | coverage-diff</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="icoveragediffoutput.html">ICoverageDiffOutput</a>
+					<a href="idiffcheckresults.html">IDiffCheckResults</a>
 				</li>
 			</ul>
-			<h1>Interface ICoverageDiffOutput</h1>
+			<h1>Interface IDiffCheckResults</h1>
 		</div>
 	</div>
 </header>
@@ -68,7 +68,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ICoverageDiffOutput</span>
+						<span class="target">IDiffCheckResults</span>
 					</li>
 				</ul>
 			</section>
@@ -79,9 +79,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="icoveragediffoutput.html#diff" class="tsd-kind-icon">diff</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="icoveragediffoutput.html#regression" class="tsd-kind-icon">regression</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="icoveragediffoutput.html#results" class="tsd-kind-icon">results</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idiffcheckresults.html#diff" class="tsd-kind-icon">diff</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idiffcheckresults.html#files" class="tsd-kind-icon">files</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idiffcheckresults.html#regression" class="tsd-kind-icon">regression</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="idiffcheckresults.html#totals" class="tsd-kind-icon">totals</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,7 +96,17 @@
 					<div class="tsd-signature tsd-kind-icon">diff<span class="tsd-signature-symbol">:</span> <a href="ijsonsummary.html" class="tsd-signature-type">IJsonSummary</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/2e9e0d3/src/common.ts#L21">src/common.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/2e9e0d3/src/common.ts#L39">src/common.ts:39</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="files" class="tsd-anchor"></a>
+					<h3>files</h3>
+					<div class="tsd-signature tsd-kind-icon">files<span class="tsd-signature-symbol">:</span> <a href="ifilesresults.html" class="tsd-signature-type">IFilesResults</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/2e9e0d3/src/common.ts#L37">src/common.ts:37</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -105,17 +116,17 @@
 					<div class="tsd-signature tsd-kind-icon">regression<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/2e9e0d3/src/common.ts#L23">src/common.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/2e9e0d3/src/common.ts#L40">src/common.ts:40</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="results" class="tsd-anchor"></a>
-					<h3>results</h3>
-					<div class="tsd-signature tsd-kind-icon">results<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="totals" class="tsd-anchor"></a>
+					<h3>totals</h3>
+					<div class="tsd-signature tsd-kind-icon">totals<span class="tsd-signature-symbol">:</span> <a href="ifileresultformat.html" class="tsd-signature-type">IFileResultFormat</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/2e9e0d3/src/common.ts#L22">src/common.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/flaviusone/coverage-diff/blob/2e9e0d3/src/common.ts#L38">src/common.ts:38</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -134,33 +145,36 @@
 					<li class=" tsd-kind-interface">
 						<a href="iconfigoptions.html" class="tsd-kind-icon">IConfig<wbr>Options</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="icoveragediffoutput.html" class="tsd-kind-icon">ICoverage<wbr>Diff<wbr>Output</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="icoveragediffoutput.html#diff" class="tsd-kind-icon">diff</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="icoveragediffoutput.html#regression" class="tsd-kind-icon">regression</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="icoveragediffoutput.html#results" class="tsd-kind-icon">results</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="icoverageinfo.html" class="tsd-kind-icon">ICoverage<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="icoveragesummary.html" class="tsd-kind-icon">ICoverage<wbr>Summary</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="idiffcheckresults.html" class="tsd-kind-icon">IDiff<wbr>Check<wbr>Results</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idiffcheckresults.html#diff" class="tsd-kind-icon">diff</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idiffcheckresults.html#files" class="tsd-kind-icon">files</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idiffcheckresults.html#regression" class="tsd-kind-icon">regression</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="idiffcheckresults.html#totals" class="tsd-kind-icon">totals</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="ifileresultformat.html" class="tsd-kind-icon">IFile<wbr>Result<wbr>Format</a>
 					</li>
