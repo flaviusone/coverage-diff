@@ -1,6 +1,6 @@
 {
   "name": "coverage-diff",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Reports differences between two istanbul JSON code coverage summaries.",
   "main": "lib/index",
   "types": "lib/index",
