@@ -10,7 +10,7 @@ import {
 export const defaultOptions: IConfigOptions = {
   checkCriteria: ['lines', 'branches', 'functions', 'statements'],
   coverageThreshold: 100,
-  coverageDecreaseTreshold: 0
+  coverageDecreaseThreshold: 0
 };
 
 /**
@@ -25,7 +25,8 @@ export function diff(
   const {
     checkCriteria,
     coverageThreshold,
-    coverageDecreaseTreshold
+    coverageDecreaseThreshold,
+    coverageDecreaseTreshold: deprecatedCoverageDecreaseThreshold
   } = options;
 
   const { regression, files, totals, diff } = diffChecker(
@@ -33,7 +34,9 @@ export function diff(
     head,
     checkCriteria,
     coverageThreshold,
-    coverageDecreaseTreshold
+    coverageDecreaseThreshold !== undefined
+      ? coverageDecreaseThreshold
+      : deprecatedCoverageDecreaseThreshold
   );
 
   const totalResults: ITotalResultFormat = {

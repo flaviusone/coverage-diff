@@ -10,11 +10,6 @@ import { fileNotCovered, fileFullCovered } from './summaries.fixture';
 
 const diffCheckerSpy = jest.spyOn(diffChecker, 'diffChecker');
 const resultFormatterSpy = jest.spyOn(resultFormatter, 'resultFormatter');
-const mockedOptions: IConfigOptions = {
-  checkCriteria: ['lines'],
-  coverageThreshold: 100,
-  coverageDecreaseTreshold: 0
-};
 
 describe('diff', () => {
   describe('default options', () => {
@@ -29,7 +24,7 @@ describe('diff', () => {
         fileFullCovered,
         coverageDiff.defaultOptions.checkCriteria,
         coverageDiff.defaultOptions.coverageThreshold,
-        coverageDiff.defaultOptions.coverageDecreaseTreshold
+        coverageDiff.defaultOptions.coverageDecreaseThreshold
       );
     });
 
@@ -49,10 +44,33 @@ describe('diff', () => {
     });
   });
   describe('custom Options', () => {
-    beforeEach(() => {
-      coverageDiff.diff(fileNotCovered, fileFullCovered, mockedOptions);
-    });
     it('should call the diffChecker module', () => {
+      const mockedOptions: IConfigOptions = {
+        checkCriteria: ['lines'],
+        coverageThreshold: 100,
+        coverageDecreaseThreshold: 0
+      };
+
+      coverageDiff.diff(fileNotCovered, fileFullCovered, mockedOptions);
+
+      expect(diffCheckerSpy).toHaveBeenCalledWith(
+        fileNotCovered,
+        fileFullCovered,
+        mockedOptions.checkCriteria,
+        mockedOptions.coverageThreshold,
+        mockedOptions.coverageDecreaseThreshold
+      );
+    });
+
+    it('should call the diffChecker module with deprecated option', () => {
+      const mockedOptions: IConfigOptions = {
+        checkCriteria: ['lines'],
+        coverageThreshold: 100,
+        coverageDecreaseTreshold: 0
+      };
+
+      coverageDiff.diff(fileNotCovered, fileFullCovered, mockedOptions);
+
       expect(diffCheckerSpy).toHaveBeenCalledWith(
         fileNotCovered,
         fileFullCovered,
