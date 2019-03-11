@@ -19,7 +19,7 @@ export const diffChecker = (
   head: IJsonSummary,
   checkCriteria = defaultOptions.checkCriteria!,
   coverageThreshold = defaultOptions.coverageThreshold!,
-  coverageDecreaseTreshold = defaultOptions.coverageDecreaseTreshold!
+  coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!
 ): IDiffCheckResults => {
   let regression = false;
   const diff = coverageDiffer(base, head);
@@ -27,7 +27,7 @@ export const diffChecker = (
   const percentageMap: Map<string, IFileResultFormat> = new Map();
   const nonZeroTest = (x: number) => x !== 0;
   const coverageDecreased = (x: number) =>
-    x < 0 ? Math.abs(x) >= coverageDecreaseTreshold : false;
+    x < 0 ? Math.abs(x) >= coverageDecreaseThreshold : false;
   const isBelowTreshold = (x: number) => x < coverageThreshold;
 
   diffMap.forEach((v, k) => {

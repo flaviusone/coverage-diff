@@ -22,7 +22,7 @@ describe('diffChecker', () => {
   describe('coverage decreased over total treshold', () => {
     let result: IDiffCheckResults;
     beforeEach(() => {
-      // Set coverageDecreaseTreshold to 100% so we only test coverageTreshold.
+      // Set coverageDecreaseThreshold to 100% so we only test coverageTreshold.
       result = diffChecker(
         fileFullCovered,
         fileHalfCovered,
