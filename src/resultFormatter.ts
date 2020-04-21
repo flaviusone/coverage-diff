@@ -1,21 +1,19 @@
 import markdownTable from 'markdown-table';
 import { getSummaryPercentages } from './helpers';
-import { IFilesResults, ITotalResultFormat } from './common';
+import { IFilesResults, IFileResultFormat } from './common';
 
 export const resultFormatter = (
   files: IFilesResults,
-  total: ITotalResultFormat
+  total: IFileResultFormat
 ): string => {
   const formattedFiles = formatFilesResults(files);
   const formattedTotal = formatTotal(total);
   return `${formattedFiles}${formattedTotal}`;
 };
 
-const formatTotal = (total: ITotalResultFormat): string => {
+const formatTotal = (total: IFileResultFormat): string => {
   const table: Array<(string | number)[]> = [];
-  const { lines, branches, functions, statements } = getSummaryPercentages(
-    total.totals
-  );
+  const { lines, branches, functions, statements } = total.pcts;
 
   const lDelta = formatDelta(total.deltas.lines);
   const bDelta = formatDelta(total.deltas.branches);
@@ -39,22 +37,22 @@ const formatFilesResults = (files: IFilesResults): string => {
   const header = [
     'Ok',
     'File',
-    'LinesΔ',
-    'BranchesΔ',
-    'FunctionsΔ',
-    'StatementsΔ'
+    'Lines',
+    'Branches',
+    'Functions',
+    'Statements'
   ];
   table.push(header);
 
   Object.keys(files).forEach(file => {
-    const { deltas, decreased } = files[file];
+    const { deltas, pcts, decreased } = files[file];
     const row = [
       decreased ? '🔴' : '✅',
       file,
-      formatDelta(deltas.lines),
-      formatDelta(deltas.branches),
-      formatDelta(deltas.functions),
-      formatDelta(deltas.statements)
+      `${pcts.lines}%<br>(${formatDelta(deltas.lines)})`,
+      `${pcts.branches}%<br>(${formatDelta(deltas.branches)})`,
+      `${pcts.functions}%<br>(${formatDelta(deltas.functions)})`,
+      `${pcts.statements}%<br>(${formatDelta(deltas.statements)})`
     ];
 
     table.push(row);

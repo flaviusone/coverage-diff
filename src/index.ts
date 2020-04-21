@@ -3,8 +3,7 @@ import { resultFormatter } from './resultFormatter';
 import {
   IJsonSummary,
   ICoverageDiffOutput,
-  IConfigOptions,
-  ITotalResultFormat
+  IConfigOptions
 } from './common';
 
 export const defaultOptions: IConfigOptions = {
@@ -39,11 +38,7 @@ export function diff(
       : deprecatedCoverageDecreaseThreshold
   );
 
-  const totalResults: ITotalResultFormat = {
-    totals: head.total,
-    ...totals
-  };
-  const results = resultFormatter(files, totalResults);
+  const results = resultFormatter(files, totals);
 
   return {
     diff,

@@ -49,15 +49,14 @@ export interface IFilesResults {
 }
 
 export interface IFileResultFormat {
-  deltas: {
-    lines: number;
-    functions: number;
-    statements: number;
-    branches: number;
-  };
+  deltas: IFileResultFields;
+  pcts: IFileResultFields;
   decreased: boolean;
 }
 
-export interface ITotalResultFormat extends IFileResultFormat {
-  totals: ICoverageSummary;
+export interface IFileResultFields  {
+  lines: number;
+  functions: number;
+  statements: number;
+  branches: number;
 }
