@@ -56,6 +56,7 @@ export const diffChecker = (
         deltas: {
           ...diffPercentages
         },
+        pcts: getSummaryPercentages(head[k]),
         decreased
       });
     }
@@ -66,6 +67,7 @@ export const diffChecker = (
   if (!totals) {
     totals = {
       deltas: { lines: 0, functions: 0, statements: 0, branches: 0 },
+      pcts: { lines: 0, functions: 0, statements: 0, branches: 0 },
       decreased: false
     };
   }

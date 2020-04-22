@@ -2,13 +2,13 @@
 
 ## What it does
 
-* Accepts base-summary.json and head-summary.json
-* Diffs the two jsons and outputs info about
-  * Percentage of changed coverage (in changed/added files)
-  * Formatted as markdown table
-* Fail if coverage decreases on a file (check on percentage) for any of the lines/func/statements/branches. Can
+- Accepts base-summary.json and head-summary.json
+- Diffs the two jsons and outputs info about
+  - Percentage of changed coverage (in changed/added files)
+  - Formatted as markdown table
+- Fail if coverage decreases on a file (check on percentage) for any of the lines/func/statements/branches. Can
    be configured to only check some criteria.
-* Written in Typescript
+- Written in Typescript
 
 ## Usage
 
@@ -27,10 +27,10 @@ console.log(diff.regression);
 
 Out:
 
-| File   | LinesΔ(%) | FunctionsΔ(%) | Ok  |
-| ------ | --------- | ------------- | --- |
-| file_1 | 80.2      | 80.2          | ✅  |
-| file_2 | -2        | -2            | 🔴  |
+| Ok  | File  | Lines         | Branches      | Functions    | Statements    |
+| --- | ----- | ------------- | ------------- | ------------ | ------------- |
+| 🔴  | file1 | 80%<br>(+10%) | 14%<br>(-30%) | 3%<br>(+20%) | 20%<br>(-10%) |
+| ✅  | file2 | 20%<br>(+10%) | 8%<br>(-30%)  | 2%<br>(-20%) | 5%<br>(-10%)  |
 
 API at https://flaviusone.github.io/coverage-diff/globals.html#diff
 

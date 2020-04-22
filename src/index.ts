@@ -1,11 +1,6 @@
 import { diffChecker } from './diffChecker';
 import { resultFormatter } from './resultFormatter';
-import {
-  IJsonSummary,
-  ICoverageDiffOutput,
-  IConfigOptions,
-  ITotalResultFormat
-} from './common';
+import { IJsonSummary, ICoverageDiffOutput, IConfigOptions } from './common';
 
 export const defaultOptions: IConfigOptions = {
   checkCriteria: ['lines', 'branches', 'functions', 'statements'],
@@ -39,11 +34,7 @@ export function diff(
       : deprecatedCoverageDecreaseThreshold
   );
 
-  const totalResults: ITotalResultFormat = {
-    totals: head.total,
-    ...totals
-  };
-  const results = resultFormatter(files, totalResults);
+  const results = resultFormatter(files, totals);
 
   return {
     diff,

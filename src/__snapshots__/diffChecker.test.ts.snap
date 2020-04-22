@@ -65,6 +65,12 @@ Object {
         "lines": -50,
         "statements": -50,
       },
+      "pcts": Object {
+        "branches": 50,
+        "functions": 50,
+        "lines": 50,
+        "statements": 50,
+      },
     },
   },
   "regression": false,
@@ -75,6 +81,12 @@ Object {
       "functions": -50,
       "lines": -50,
       "statements": -50,
+    },
+    "pcts": Object {
+      "branches": 50,
+      "functions": 50,
+      "lines": 50,
+      "statements": 50,
     },
   },
 }
@@ -145,6 +157,12 @@ Object {
         "lines": -100,
         "statements": -100,
       },
+      "pcts": Object {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0,
+      },
     },
   },
   "regression": true,
@@ -155,6 +173,12 @@ Object {
       "functions": -100,
       "lines": -100,
       "statements": -100,
+    },
+    "pcts": Object {
+      "branches": 0,
+      "functions": 0,
+      "lines": 0,
+      "statements": 0,
     },
   },
 }
@@ -225,12 +249,24 @@ Object {
         "lines": 100,
         "statements": 100,
       },
+      "pcts": Object {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100,
+      },
     },
   },
   "regression": false,
   "totals": Object {
     "decreased": false,
     "deltas": Object {
+      "branches": 100,
+      "functions": 100,
+      "lines": 100,
+      "statements": 100,
+    },
+    "pcts": Object {
       "branches": 100,
       "functions": 100,
       "lines": 100,
@@ -305,12 +341,24 @@ Object {
         "lines": 50,
         "statements": 0,
       },
+      "pcts": Object {
+        "branches": 50,
+        "functions": 50,
+        "lines": 100,
+        "statements": 50,
+      },
     },
   },
   "regression": false,
   "totals": Object {
     "decreased": false,
     "deltas": Object {
+      "branches": 0,
+      "functions": 0,
+      "lines": 0,
+      "statements": 0,
+    },
+    "pcts": Object {
       "branches": 0,
       "functions": 0,
       "lines": 0,
@@ -381,6 +429,12 @@ Object {
   "totals": Object {
     "decreased": false,
     "deltas": Object {
+      "branches": 0,
+      "functions": 0,
+      "lines": 0,
+      "statements": 0,
+    },
+    "pcts": Object {
       "branches": 0,
       "functions": 0,
       "lines": 0,

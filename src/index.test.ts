@@ -30,8 +30,8 @@ describe('diff', () => {
 
     it('should call the resultFormatter module', () => {
       expect(resultFormatterSpy).toHaveBeenCalledWith('mockedFiles', {
-        totals: fileFullCovered.total,
-        deltas: 'mockedTotals'
+        deltas: 'mockedTotals',
+        pcts: 'mockedPcts'
       });
     });
 
