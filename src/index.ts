@@ -1,10 +1,6 @@
 import { diffChecker } from './diffChecker';
 import { resultFormatter } from './resultFormatter';
-import {
-  IJsonSummary,
-  ICoverageDiffOutput,
-  IConfigOptions
-} from './common';
+import { IJsonSummary, ICoverageDiffOutput, IConfigOptions } from './common';
 
 export const defaultOptions: IConfigOptions = {
   checkCriteria: ['lines', 'branches', 'functions', 'statements'],

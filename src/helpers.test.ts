@@ -3,8 +3,10 @@ import { objectToMap, mapToObject } from './helpers';
 const myObject = {
   foo: 'bar'
 };
-
-const myMap = new Map([['foo', 'bar'], ['bar', 'foo']]);
+const myMap = new Map([
+  ['foo', 'bar'],
+  ['bar', 'foo']
+]);
 
 describe('helpers', () => {
   describe('objectToMap', () => {

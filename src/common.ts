@@ -54,7 +54,7 @@ export interface IFileResultFormat {
   decreased: boolean;
 }
 
-export interface IFileResultFields  {
+export interface IFileResultFields {
   lines: number;
   functions: number;
   statements: number;

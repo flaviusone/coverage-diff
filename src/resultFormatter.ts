@@ -33,14 +33,7 @@ const formatTotal = (total: IFileResultFormat): string => {
 const formatFilesResults = (files: IFilesResults): string => {
   let noChange = true;
   const table: Array<(string | number)[]> = [];
-  const header = [
-    'Ok',
-    'File',
-    'Lines',
-    'Branches',
-    'Functions',
-    'Statements'
-  ];
+  const header = ['Ok', 'File', 'Lines', 'Branches', 'Functions', 'Statements'];
   table.push(header);
 
   Object.keys(files).forEach(file => {
