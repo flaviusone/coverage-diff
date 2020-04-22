@@ -1,5 +1,4 @@
 import markdownTable from 'markdown-table';
-import { getSummaryPercentages } from './helpers';
 import { IFilesResults, IFileResultFormat } from './common';
 
 export const resultFormatter = (

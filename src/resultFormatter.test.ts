@@ -1,6 +1,5 @@
 import { IFilesResults, IFileResultFormat } from './common';
 import { resultFormatter } from './resultFormatter';
-import { fileFullCovered } from './summaries.fixture';
 
 const filesResults: IFilesResults = {
   file1: {
