@@ -24,9 +24,6 @@
     "jest-coverage": "yarn jest --coverage",
     "tsc": "./node_modules/.bin/tsc --noEmit --pretty"
   },
-  "jest": {
-    "testEnvironment": "node"
-  },
   "lint-staged": {
     "*.{js,ts}": "eslint",
     "*.{js,ts,md}": "prettier --single-quote --list-different"

@@ -7,5 +7,6 @@ module.exports = {
     '^.+\\.(js|ts)$': 'ts-jest'
   },
   testMatch: ['**/?(*.)test.(js|ts)'],
+  testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'js', 'json']
 };
