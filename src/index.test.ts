@@ -24,7 +24,8 @@ describe('diff', () => {
         fileFullCovered,
         coverageDiff.defaultOptions.checkCriteria,
         coverageDiff.defaultOptions.coverageThreshold,
-        coverageDiff.defaultOptions.coverageDecreaseThreshold
+        coverageDiff.defaultOptions.coverageDecreaseThreshold,
+        coverageDiff.defaultOptions.totalsOnly
       );
     });
 
@@ -48,7 +49,8 @@ describe('diff', () => {
       const mockedOptions: IConfigOptions = {
         checkCriteria: ['lines'],
         coverageThreshold: 100,
-        coverageDecreaseThreshold: 0
+        coverageDecreaseThreshold: 0,
+        totalsOnly: false
       };
 
       coverageDiff.diff(fileNotCovered, fileFullCovered, mockedOptions);
@@ -58,7 +60,8 @@ describe('diff', () => {
         fileFullCovered,
         mockedOptions.checkCriteria,
         mockedOptions.coverageThreshold,
-        mockedOptions.coverageDecreaseThreshold
+        mockedOptions.coverageDecreaseThreshold,
+        mockedOptions.totalsOnly
       );
     });
 
@@ -66,7 +69,8 @@ describe('diff', () => {
       const mockedOptions: IConfigOptions = {
         checkCriteria: ['lines'],
         coverageThreshold: 100,
-        coverageDecreaseTreshold: 0
+        coverageDecreaseTreshold: 0,
+        totalsOnly: false
       };
 
       coverageDiff.diff(fileNotCovered, fileFullCovered, mockedOptions);
@@ -76,7 +80,8 @@ describe('diff', () => {
         fileFullCovered,
         mockedOptions.checkCriteria,
         mockedOptions.coverageThreshold,
-        mockedOptions.coverageDecreaseTreshold
+        mockedOptions.coverageDecreaseTreshold,
+        mockedOptions.totalsOnly
       );
     });
   });

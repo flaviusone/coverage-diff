@@ -19,7 +19,8 @@ export const diffChecker = (
   head: IJsonSummary,
   checkCriteria = defaultOptions.checkCriteria!,
   coverageThreshold = defaultOptions.coverageThreshold!,
-  coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!
+  coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!,
+  totalsOnly: boolean = defaultOptions.totalsOnly
 ): IDiffCheckResults => {
   let regression = false;
   const diff = coverageDiffer(base, head);
@@ -46,10 +47,15 @@ export const diffChecker = (
         isBelowTreshold
       );
 
-      // Coverage decreased on a file or under treshold, regress.
+      // Coverage decreased on a file or under threshold, regress.
       // Ignore the total field as we check only files.
-      if ((decreased || belowTreshold) && k !== 'total') {
-        regression = true;
+      if (decreased || belowTreshold) {
+        if (k === 'total' && totalsOnly) {
+          regression = true;
+        }
+        if (k !== 'total' && !totalsOnly) {
+          regression = true;
+        }
       }
 
       percentageMap.set(k, {

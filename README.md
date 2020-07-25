@@ -34,6 +34,32 @@ Out:
 
 API at https://flaviusone.github.io/coverage-diff/globals.html#diff
 
+## CLI Usage
+
+Example:
+
+```bash
+coverage-diff \
+--base example/base-summary.json \
+--head example/head-summary.json \
+--minimum 0 \
+--decreaseThreshold 3 \
+--criteria branches \
+--criteria statements \
+--output results \
+--totals
+```
+
+| Option            | Alias | Description                                                                      | Required | Default                                           |
+| ----------------- | ----- | -------------------------------------------------------------------------------- | -------- | ------------------------------------------------- |
+| base              | b     | The path to the older json-summary file                                          | True     | n/a                                               |
+| head              | h     | The path to the newer json-summary file                                          | True     | n/a                                               |
+| minimum           | m     | The minimum required code coverage                                               | False    | 0                                                 |
+| decreaseThreshold | d     | The amount that the coverage can be decreased by without failing regression test | False    | 100                                               |
+| criteria          | c     | The coverage metrics to check for regression test. Pass multiple                 | False    | \['lines', 'branches', 'functions', 'statements'] |
+| totals            | t     | Whether or not to only consider the totals for the regression test               | False    | false                                             |
+| output            | o     | Outputs to print: diff, results, regression                                      | False    | false                                             |
+
 ## Auto-generated docs
 
 https://flaviusone.github.io/coverage-diff/

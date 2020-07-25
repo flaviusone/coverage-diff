@@ -1,6 +1,6 @@
 {
   "name": "coverage-diff",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "description": "Reports differences between two istanbul JSON code coverage summaries.",
   "main": "lib/index",
   "types": "lib/index",
@@ -17,6 +17,7 @@
     "precommit": "lint-staged",
     "prepublishOnly": "yarn clean && yarn lint && yarn test && yarn build",
     "prettier": "prettier --single-quote --list-different '**/*.{js,ts,md}'",
+    "prettier:fix": "prettier --write --single-quote --list-different '**/*.{js,ts,md}'",
     "publish-docs": "yarn build-docs && gh-pages -d docs -b gh-pages && yarn clean",
     "test": "yarn run tsc && yarn run jest",
     "jest": "jest --maxWorkers=4",
@@ -45,6 +46,10 @@
     "typescript-eslint-parser": "14.0.0"
   },
   "dependencies": {
+    "command-line-args": "^5.1.1",
     "markdown-table": "1.1.1"
+  },
+  "bin": {
+    "coverage-diff": "./cli.js"
   }
 }
