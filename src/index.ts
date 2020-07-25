@@ -5,7 +5,8 @@ import { IJsonSummary, ICoverageDiffOutput, IConfigOptions } from './common';
 export const defaultOptions: IConfigOptions = {
   checkCriteria: ['lines', 'branches', 'functions', 'statements'],
   coverageThreshold: 100,
-  coverageDecreaseThreshold: 0
+  coverageDecreaseThreshold: 0,
+  totalsOnly: false
 };
 
 /**
@@ -21,7 +22,8 @@ export function diff(
     checkCriteria,
     coverageThreshold,
     coverageDecreaseThreshold,
-    coverageDecreaseTreshold: deprecatedCoverageDecreaseThreshold
+    coverageDecreaseTreshold: deprecatedCoverageDecreaseThreshold,
+    totalsOnly
   } = options;
 
   const { regression, files, totals, diff } = diffChecker(
@@ -31,7 +33,8 @@ export function diff(
     coverageThreshold,
     coverageDecreaseThreshold !== undefined
       ? coverageDecreaseThreshold
-      : deprecatedCoverageDecreaseThreshold
+      : deprecatedCoverageDecreaseThreshold,
+    totalsOnly
   );
 
   const results = resultFormatter(files, totals);

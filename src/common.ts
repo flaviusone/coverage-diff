@@ -35,6 +35,7 @@ export interface IConfigOptions {
    */
   coverageDecreaseTreshold?: number;
   coverageDecreaseThreshold?: number;
+  totalsOnly: boolean;
 }
 
 export interface IDiffCheckResults {
