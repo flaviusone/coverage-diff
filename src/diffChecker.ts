@@ -67,7 +67,12 @@ export const diffChecker = (
   if (!totals) {
     totals = {
       deltas: { lines: 0, functions: 0, statements: 0, branches: 0 },
-      pcts: { lines: 0, functions: 0, statements: 0, branches: 0 },
+      pcts: {
+        lines: head.total.lines.pct,
+        functions: head.total.functions.pct,
+        statements: head.total.statements.pct,
+        branches: head.total.branches.pct
+      },
       decreased: false
     };
   }

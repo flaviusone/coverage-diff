@@ -43,6 +43,20 @@ describe('diffChecker', () => {
     it('should match snapshot', () => {
       expect(diffChecker(fileFullCovered, fileFullCovered)).toMatchSnapshot();
     });
+
+    it('should return total percentages', () => {
+      expect(
+        diffChecker(fileFullCovered, fileFullCovered, undefined, 0).totals
+      ).toMatchObject({
+        deltas: { lines: 0, functions: 0, statements: 0, branches: 0 },
+        pcts: {
+          lines: 100,
+          functions: 100,
+          statements: 100,
+          branches: 100
+        }
+      });
+    });
   });
   describe('only check lines', () => {
     it('should match snapshot', () => {
