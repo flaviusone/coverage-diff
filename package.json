@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "./node_modules/.bin/tsc -p tsconfig.build.json",
-    "build-docs": "typedoc --out docs/ src/ typings/",
+    "build-docs": "typedoc --out docs/ src/index.ts",
     "clean": "rm -rf lib docs coverage",
     "eslint": "eslint 'src/**'",
     "lint": "yarn clean && yarn eslint && yarn prettier",
@@ -40,7 +40,7 @@
     "lint-staged": "12.3.5",
     "prettier": "2.5.1",
     "ts-jest": "27.1.3",
-    "typedoc": "0.11.1",
+    "typedoc": "0.22.13",
     "typescript": "4.6.2"
   },
   "dependencies": {
