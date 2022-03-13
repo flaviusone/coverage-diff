@@ -1,16 +1,16 @@
 import markdownTable from 'markdown-table';
-import { IFilesResults, IFileResultFormat } from './common';
+import { FilesResults, FileResultFormat } from './common';
 
 export const resultFormatter = (
-  files: IFilesResults,
-  total: IFileResultFormat
+  files: FilesResults,
+  total: FileResultFormat
 ): string => {
   const formattedFiles = formatFilesResults(files);
   const formattedTotal = formatTotal(total);
   return `${formattedFiles}${formattedTotal}`;
 };
 
-const formatTotal = (total: IFileResultFormat): string => {
+const formatTotal = (total: FileResultFormat): string => {
   const table: Array<(string | number)[]> = [];
   const { lines, branches, functions, statements } = total.pcts;
 
@@ -30,7 +30,7 @@ const formatTotal = (total: IFileResultFormat): string => {
   return '\n\nTotal:\n\n' + markdownTable(table);
 };
 
-const formatFilesResults = (files: IFilesResults): string => {
+const formatFilesResults = (files: FilesResults): string => {
   let noChange = true;
   const table: Array<(string | number)[]> = [];
   const header = ['Ok', 'File', 'Lines', 'Branches', 'Functions', 'Statements'];

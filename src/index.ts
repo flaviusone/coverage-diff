@@ -1,8 +1,8 @@
 import { diffChecker } from './diffChecker';
 import { resultFormatter } from './resultFormatter';
-import { IJsonSummary, ICoverageDiffOutput, IConfigOptions } from './common';
+import { JsonSummary, CoverageDiffOutput, ConfigOptions } from './common';
 
-export const defaultOptions: IConfigOptions = {
+export const defaultOptions: ConfigOptions = {
   checkCriteria: ['lines', 'branches', 'functions', 'statements'],
   coverageThreshold: 100,
   coverageDecreaseThreshold: 0
@@ -13,10 +13,10 @@ export const defaultOptions: IConfigOptions = {
  *   diff between them.
  */
 export function diff(
-  base: IJsonSummary,
-  head: IJsonSummary,
+  base: JsonSummary,
+  head: JsonSummary,
   options = defaultOptions
-): ICoverageDiffOutput {
+): CoverageDiffOutput {
   const { checkCriteria, coverageThreshold, coverageDecreaseThreshold } =
     options;
 
@@ -36,5 +36,9 @@ export function diff(
     regression
   };
 }
-export { IJsonSummary, ICoverageDiffOutput, IConfigOptions };
+export {
+  JsonSummary as IJsonSummary,
+  CoverageDiffOutput as ICoverageDiffOutput,
+  ConfigOptions as IConfigOptions
+};
 export default diff;

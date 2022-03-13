@@ -1,6 +1,6 @@
-import { IJsonSummary } from './common';
+import { JsonSummary } from './common';
 
-export const fileFullCovered: IJsonSummary = {
+export const fileFullCovered: JsonSummary = {
   total: {
     lines: {
       total: 2,
@@ -55,7 +55,7 @@ export const fileFullCovered: IJsonSummary = {
   }
 };
 
-export const fileFullCoveredfileHalfCovered: IJsonSummary = {
+export const fileFullCoveredfileHalfCovered: JsonSummary = {
   ...fileFullCovered,
   fileB: {
     lines: {
@@ -111,7 +111,7 @@ export const fileFullCoveredfileHalfCovered: IJsonSummary = {
   }
 };
 
-export const fileNotCovered: IJsonSummary = {
+export const fileNotCovered: JsonSummary = {
   total: {
     lines: {
       total: 2,
@@ -166,7 +166,7 @@ export const fileNotCovered: IJsonSummary = {
   }
 };
 
-export const fileHalfCovered: IJsonSummary = {
+export const fileHalfCovered: JsonSummary = {
   total: {
     lines: {
       total: 2,
@@ -221,7 +221,7 @@ export const fileHalfCovered: IJsonSummary = {
   }
 };
 
-export const coverageNotChanged: IJsonSummary = {
+export const coverageNotChanged: JsonSummary = {
   ...fileFullCovered,
   fileA: {
     lines: {
@@ -251,7 +251,7 @@ export const coverageNotChanged: IJsonSummary = {
   }
 };
 
-export const coverageDecreased: IJsonSummary = {
+export const coverageDecreased: JsonSummary = {
   total: {
     lines: {
       total: 0,
@@ -306,7 +306,7 @@ export const coverageDecreased: IJsonSummary = {
   }
 };
 
-export const totalDecreased: IJsonSummary = {
+export const totalDecreased: JsonSummary = {
   ...coverageNotChanged,
   total: {
     lines: {
@@ -336,7 +336,7 @@ export const totalDecreased: IJsonSummary = {
   }
 };
 
-export const onlyLinesIncreased: IJsonSummary = {
+export const onlyLinesIncreased: JsonSummary = {
   ...fileHalfCovered,
   fileA: {
     ...fileHalfCovered.fileA,
@@ -349,7 +349,7 @@ export const onlyLinesIncreased: IJsonSummary = {
   }
 };
 
-export const newFile: IJsonSummary = {
+export const newFile: JsonSummary = {
   ...fileFullCovered,
   fileB: {
     ...fileFullCovered.fileA

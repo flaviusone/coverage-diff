@@ -1,31 +1,31 @@
 /* eslint-disable no-undef */
-export interface ICoverageSummary {
-  lines: ICoverageInfo;
-  statements: ICoverageInfo;
-  functions: ICoverageInfo;
-  branches: ICoverageInfo;
+export interface CoverageSummary {
+  lines: CoverageInfo;
+  statements: CoverageInfo;
+  functions: CoverageInfo;
+  branches: CoverageInfo;
 }
 
-export interface ICoverageInfo {
+export interface CoverageInfo {
   total: number;
   covered: number;
   skipped: number;
   pct: number; // Coverage percentage (covered/total ratio).
 }
 
-export interface IJsonSummary {
-  [key: string]: ICoverageSummary;
+export interface JsonSummary {
+  [key: string]: CoverageSummary;
 }
 
-export interface ICoverageDiffOutput {
-  diff: IJsonSummary;
+export interface CoverageDiffOutput {
+  diff: JsonSummary;
   results: string;
   regression: boolean;
 }
 
 export type Criteria = 'lines' | 'branches' | 'functions' | 'statements';
 
-export interface IConfigOptions {
+export interface ConfigOptions {
   checkCriteria?: Array<Criteria>;
   /* Fail coverage check if per-file coverage is lower */
   coverageThreshold?: number;
@@ -33,24 +33,24 @@ export interface IConfigOptions {
   coverageDecreaseThreshold?: number;
 }
 
-export interface IDiffCheckResults {
-  files: IFilesResults;
-  totals: IFileResultFormat;
-  diff: IJsonSummary;
+export interface DiffCheckResults {
+  files: FilesResults;
+  totals: FileResultFormat;
+  diff: JsonSummary;
   regression: boolean;
 }
 
-export interface IFilesResults {
-  [key: string]: IFileResultFormat;
+export interface FilesResults {
+  [key: string]: FileResultFormat;
 }
 
-export interface IFileResultFormat {
-  deltas: IFileResultFields;
-  pcts: IFileResultFields;
+export interface FileResultFormat {
+  deltas: FileResultFields;
+  pcts: FileResultFields;
   decreased: boolean;
 }
 
-export interface IFileResultFields {
+export interface FileResultFields {
   lines: number;
   functions: number;
   statements: number;
