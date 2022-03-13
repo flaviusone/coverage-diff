@@ -36,9 +36,5 @@ export function diff(
     regression
   };
 }
-export {
-  JsonSummary as IJsonSummary,
-  CoverageDiffOutput as ICoverageDiffOutput,
-  ConfigOptions as IConfigOptions
-};
+export { JsonSummary, CoverageDiffOutput, ConfigOptions };
 export default diff;
