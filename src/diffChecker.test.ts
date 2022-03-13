@@ -19,10 +19,10 @@ describe('diffChecker', () => {
       expect(diffChecker(fileFullCovered, fileNotCovered)).toMatchSnapshot();
     });
   });
-  describe('coverage decreased over total treshold', () => {
+  describe('coverage decreased over total threshold', () => {
     let result: IDiffCheckResults;
     beforeEach(() => {
-      // Set coverageDecreaseThreshold to 100% so we only test coverageTreshold.
+      // Set coverageDecreaseThreshold to 100% so we only test coverageThreshold.
       result = diffChecker(
         fileFullCovered,
         fileHalfCovered,
@@ -67,7 +67,7 @@ describe('diffChecker', () => {
   });
   describe('total decreased', () => {
     it('should not regress', () => {
-      // Set coverageTreshold to 0 as we have a new file half covered.
+      // Set coverageThreshold to 0 as we have a new file half covered.
       expect(
         diffChecker(
           fileFullCovered,

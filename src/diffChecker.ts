@@ -28,7 +28,7 @@ export const diffChecker = (
   const nonZeroTest = (x: number) => x !== 0;
   const coverageDecreased = (x: number) =>
     x < 0 ? Math.abs(x) >= coverageDecreaseThreshold : false;
-  const isBelowTreshold = (x: number) => x < coverageThreshold;
+  const isBelowThreshold = (x: number) => x < coverageThreshold;
 
   diffMap.forEach((v, k) => {
     const diffPercentages = getSummaryPercentages(v);
@@ -40,15 +40,15 @@ export const diffChecker = (
         checkCriteria,
         coverageDecreased
       );
-      const belowTreshold = checkCoverageForCondition(
+      const belowThreshold = checkCoverageForCondition(
         head[k],
         checkCriteria,
-        isBelowTreshold
+        isBelowThreshold
       );
 
-      // Coverage decreased on a file or under treshold, regress.
+      // Coverage decreased on a file or under threshold, regress.
       // Ignore the total field as we check only files.
-      if ((decreased || belowTreshold) && k !== 'total') {
+      if ((decreased || belowThreshold) && k !== 'total') {
         regression = true;
       }
 

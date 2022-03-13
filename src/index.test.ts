@@ -66,7 +66,7 @@ describe('diff', () => {
       const mockedOptions: IConfigOptions = {
         checkCriteria: ['lines'],
         coverageThreshold: 100,
-        coverageDecreaseTreshold: 0
+        coverageDecreaseThreshold: 0
       };
 
       coverageDiff.diff(fileNotCovered, fileFullCovered, mockedOptions);
@@ -76,7 +76,7 @@ describe('diff', () => {
         fileFullCovered,
         mockedOptions.checkCriteria,
         mockedOptions.coverageThreshold,
-        mockedOptions.coverageDecreaseTreshold
+        mockedOptions.coverageDecreaseThreshold
       );
     });
   });
