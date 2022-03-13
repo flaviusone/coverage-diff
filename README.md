@@ -13,8 +13,8 @@
 ## Usage
 
 ```js
-const fs = require('fs');
-const coverageDiff = require('coverage-diff');
+import fs from 'fs';
+import { diff as coverageDiff } from 'coverage-diff';
 
 const base = JSON.parse(fs.readFileSync('./base-summary.json'));
 const head = JSON.parse(fs.readFileSync('./head-summary.json'));
@@ -32,8 +32,4 @@ Out:
 | 🔴  | file1 | 80%<br>(+10%) | 14%<br>(-30%) | 3%<br>(+20%) | 20%<br>(-10%) |
 | ✅  | file2 | 20%<br>(+10%) | 8%<br>(-30%)  | 2%<br>(-20%) | 5%<br>(-10%)  |
 
-API at https://flaviusone.github.io/coverage-diff/globals.html#diff
-
-## Auto-generated docs
-
-https://flaviusone.github.io/coverage-diff/
+API at https://flaviusone.github.io/coverage-diff/
