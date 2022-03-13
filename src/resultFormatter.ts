@@ -36,7 +36,7 @@ const formatFilesResults = (files: IFilesResults): string => {
   const header = ['Ok', 'File', 'Lines', 'Branches', 'Functions', 'Statements'];
   table.push(header);
 
-  Object.keys(files).forEach(file => {
+  Object.keys(files).forEach((file) => {
     const { deltas, pcts, decreased } = files[file];
     const row = [
       decreased ? '🔴' : '✅',
