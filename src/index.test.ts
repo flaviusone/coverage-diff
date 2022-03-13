@@ -1,4 +1,4 @@
-import { IConfigOptions, ICoverageDiffOutput } from './common';
+import { ConfigOptions, CoverageDiffOutput } from './common';
 import * as diffChecker from './diffChecker';
 import * as resultFormatter from './resultFormatter';
 import * as coverageDiff from './index';
@@ -13,7 +13,7 @@ const resultFormatterSpy = jest.spyOn(resultFormatter, 'resultFormatter');
 
 describe('diff', () => {
   describe('default options', () => {
-    let diffOutput: ICoverageDiffOutput;
+    let diffOutput: CoverageDiffOutput;
     beforeEach(() => {
       diffOutput = coverageDiff.diff(fileNotCovered, fileFullCovered);
     });
@@ -45,7 +45,7 @@ describe('diff', () => {
   });
   describe('custom Options', () => {
     it('should call the diffChecker module', () => {
-      const mockedOptions: IConfigOptions = {
+      const mockedOptions: ConfigOptions = {
         checkCriteria: ['lines'],
         coverageThreshold: 100,
         coverageDecreaseThreshold: 0
@@ -63,7 +63,7 @@ describe('diff', () => {
     });
 
     it('should call the diffChecker module with deprecated option', () => {
-      const mockedOptions: IConfigOptions = {
+      const mockedOptions: ConfigOptions = {
         checkCriteria: ['lines'],
         coverageThreshold: 100,
         coverageDecreaseThreshold: 0

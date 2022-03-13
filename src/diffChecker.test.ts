@@ -6,7 +6,7 @@ import {
   fileHalfCovered,
   fileFullCoveredfileHalfCovered
 } from './summaries.fixture';
-import { IDiffCheckResults } from './common';
+import { DiffCheckResults } from './common';
 
 describe('diffChecker', () => {
   describe('coverage increased', () => {
@@ -20,7 +20,7 @@ describe('diffChecker', () => {
     });
   });
   describe('coverage decreased over total threshold', () => {
-    let result: IDiffCheckResults;
+    let result: DiffCheckResults;
     beforeEach(() => {
       // Set coverageDecreaseThreshold to 100% so we only test coverageThreshold.
       result = diffChecker(
