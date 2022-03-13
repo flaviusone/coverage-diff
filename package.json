@@ -36,7 +36,6 @@
     "eslint": "8.11.0",
     "eslint-config-prettier": "8.5.0",
     "gh-pages": "1.1.0",
-    "husky": "0.14.3",
     "jest": "22.4.3",
     "lint-staged": "7.0.4",
     "prettier": "2.5.1",
