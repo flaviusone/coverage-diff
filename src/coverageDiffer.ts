@@ -1,14 +1,14 @@
 import { objectToMap, mapToObject } from './helpers';
-import { IJsonSummary, ICoverageSummary, ICoverageInfo } from './common';
+import { JsonSummary, CoverageSummary, CoverageInfo } from './common';
 
 /**
  * Compares two Istanbul json-summary formatted coverage objects and outputs the
  *   diff between them.
  */
 export const coverageDiffer = (
-  base: IJsonSummary,
-  head: IJsonSummary
-): IJsonSummary => {
+  base: JsonSummary,
+  head: JsonSummary
+): JsonSummary => {
   const baseMap = objectToMap(base);
   const headMap = objectToMap(head);
   const diffMap = new Map();
@@ -33,9 +33,9 @@ export const coverageDiffer = (
  * Returns the diff of two CoverageSummary objects.
  */
 const diffSummary = (
-  summaryA: ICoverageSummary,
-  summaryB: ICoverageSummary
-): ICoverageSummary => {
+  summaryA: CoverageSummary,
+  summaryB: CoverageSummary
+): CoverageSummary => {
   return {
     lines: diffInfo(summaryA.lines, summaryB.lines),
     statements: diffInfo(summaryA.statements, summaryB.statements),
@@ -47,10 +47,7 @@ const diffSummary = (
 /**
  * Returns the diff of two CoverageInfo objects.
  */
-const diffInfo = (
-  infoA: ICoverageInfo,
-  infoB: ICoverageInfo
-): ICoverageInfo => {
+const diffInfo = (infoA: CoverageInfo, infoB: CoverageInfo): CoverageInfo => {
   return {
     total: infoA.total - infoB.total,
     covered: infoA.covered - infoB.covered,

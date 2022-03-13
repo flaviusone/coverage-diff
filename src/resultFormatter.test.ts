@@ -1,7 +1,7 @@
-import { IFilesResults, IFileResultFormat } from './common';
+import { FilesResults, FileResultFormat } from './common';
 import { resultFormatter } from './resultFormatter';
 
-const filesResults: IFilesResults = {
+const filesResults: FilesResults = {
   file1: {
     deltas: {
       lines: 10,
@@ -34,7 +34,7 @@ const filesResults: IFilesResults = {
   }
 };
 
-const totalResults: IFileResultFormat = {
+const totalResults: FileResultFormat = {
   deltas: {
     lines: 100,
     functions: 100,

@@ -3,10 +3,10 @@ import { objectToMap, mapToObject } from './helpers';
 import { getSummaryPercentages } from './helpers';
 import { defaultOptions } from './index';
 import {
-  IJsonSummary,
-  IFileResultFormat,
-  IDiffCheckResults,
-  ICoverageSummary,
+  JsonSummary,
+  FileResultFormat,
+  DiffCheckResults,
+  CoverageSummary,
   Criteria
 } from './common';
 /**
@@ -15,16 +15,16 @@ import {
  * Returns a structured result and regression status.
  */
 export const diffChecker = (
-  base: IJsonSummary,
-  head: IJsonSummary,
+  base: JsonSummary,
+  head: JsonSummary,
   checkCriteria = defaultOptions.checkCriteria!,
   coverageThreshold = defaultOptions.coverageThreshold!,
   coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!
-): IDiffCheckResults => {
+): DiffCheckResults => {
   let regression = false;
   const diff = coverageDiffer(base, head);
   const diffMap = objectToMap(diff);
-  const percentageMap: Map<string, IFileResultFormat> = new Map();
+  const percentageMap: Map<string, FileResultFormat> = new Map();
   const nonZeroTest = (x: number) => x !== 0;
   const coverageDecreased = (x: number) =>
     x < 0 ? Math.abs(x) >= coverageDecreaseThreshold : false;
@@ -84,7 +84,7 @@ export const diffChecker = (
 };
 
 const checkCoverageForCondition = (
-  coverage: ICoverageSummary,
+  coverage: CoverageSummary,
   checkCriteria: Criteria[],
   condition: (x: number) => boolean
 ) => {
