@@ -8,7 +8,7 @@
   - Formatted as markdown table
 - Fail if coverage decreases on a file (check on percentage) for any of the lines/func/statements/branches. Can
    be configured to only check some criteria.
-- Written in Typescript
+- Written in Typescript.
 
 ## Usage
 
