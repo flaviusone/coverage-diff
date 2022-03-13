@@ -17,21 +17,15 @@ export function diff(
   head: IJsonSummary,
   options = defaultOptions
 ): ICoverageDiffOutput {
-  const {
-    checkCriteria,
-    coverageThreshold,
-    coverageDecreaseThreshold,
-    coverageDecreaseTreshold: deprecatedCoverageDecreaseThreshold
-  } = options;
+  const { checkCriteria, coverageThreshold, coverageDecreaseThreshold } =
+    options;
 
   const { regression, files, totals, diff } = diffChecker(
     base,
     head,
     checkCriteria,
     coverageThreshold,
-    coverageDecreaseThreshold !== undefined
-      ? coverageDecreaseThreshold
-      : deprecatedCoverageDecreaseThreshold
+    coverageDecreaseThreshold
   );
 
   const results = resultFormatter(files, totals);

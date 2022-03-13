@@ -30,10 +30,6 @@ export interface IConfigOptions {
   /* Fail coverage check if per-file coverage is lower */
   coverageThreshold?: number;
   /* Fail coverage check if per-file coverage decrease is lower */
-  /**
-   * @deprecated use coverageDecreaseThreshold instead
-   */
-  coverageDecreaseTreshold?: number;
   coverageDecreaseThreshold?: number;
 }
 

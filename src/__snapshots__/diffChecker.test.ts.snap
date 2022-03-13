@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`diffChecker coverage decreased over total treshold should match snapshot 1`] = `
+exports[`diffChecker coverage decreased over total threshold should match snapshot 1`] = `
 Object {
   "diff": Object {
     "fileA": Object {
