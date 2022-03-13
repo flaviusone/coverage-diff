@@ -6,6 +6,12 @@ module.exports = {
   transform: {
     '^.+\\.(js|ts)$': 'ts-jest'
   },
+  globals: {
+    'ts-jest': {
+      isolatedModules: true,
+      diagnostics: false
+    }
+  },
   testMatch: ['**/?(*.)test.(js|ts)'],
   testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'js', 'json']
