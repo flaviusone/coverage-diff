@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`resultFormatter should format files results as markdown table 1`] = `
-"| Ok  | File  | Lines         | Branches      | Functions    | Statements    |
-| --- | ----- | ------------- | ------------- | ------------ | ------------- |
-| 🔴  | file1 | 80%<br>(+10%) | 14%<br>(-30%) | 3%<br>(+20%) | 20%<br>(-10%) |
-| ✅   | file2 | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+"| Ok | File  | Lines         | Branches      | Functions    | Statements    |
+| -- | ----- | ------------- | ------------- | ------------ | ------------- |
+| 🔴 | file1 | 80%<br>(+10%) | 14%<br>(-30%) | 3%<br>(+20%) | 20%<br>(-10%) |
+| ✅  | file2 | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
 
 Total:
 

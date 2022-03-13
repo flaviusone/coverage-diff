@@ -90,7 +90,7 @@ const checkCoverageForCondition = (
 ) => {
   const diffPercentages = getSummaryPercentages(coverage);
 
-  const values = checkCriteria.map(criteria => diffPercentages[criteria]);
+  const values = checkCriteria.map((criteria) => diffPercentages[criteria]);
 
   return values.some(condition);
 };

@@ -7,12 +7,12 @@ module.exports = {
     jest: true
   },
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 6,
     sourceType: 'module'
   },
-  parser: 'typescript-eslint-parser',
-  plugins: ['typescript'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
   rules: {
-    'typescript/no-unused-vars': 2
+    '@typescript-eslint/no-unused-vars': 2
   }
 };
