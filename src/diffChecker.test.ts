@@ -19,9 +19,14 @@ describe('diffChecker', () => {
       expect(result.regression).toBe(false);
     });
 
+    it('should not be below threshold', () => {
+      expect(result.belowThreshold).toBe(false);
+    });
+
     it('outputs correct total percentages for file', () => {
       expectToMatchObject(result.files['fileA'], {
         decreased: false,
+        belowThreshold: false, // threshold is 100
         pcts: {
           branches: 100,
           functions: 100,
@@ -46,12 +51,19 @@ describe('diffChecker', () => {
     beforeEach(() => {
       result = diffChecker(fileFullCovered, fileNotCovered);
     });
+
     it('should not regress', () => {
       expect(result.regression).toBe(true);
     });
 
+    it('should be below threshold', () => {
+      // default for threshold is 100%, so this will be true
+      expect(result.belowThreshold).toBe(true);
+    });
+
     it('outputs correct total percentages for file', () => {
       expectToMatchObject(result.files['fileA'], {
+        belowThreshold: true, // threshold is 100
         decreased: true,
         pcts: {
           branches: 0,
@@ -90,9 +102,51 @@ describe('diffChecker', () => {
       expect(result.regression).toBe(false);
     });
 
+    it('should not be below threshold', () => {
+      // Total is now 50% but overall threshold is 40% so it still passes.
+      expect(result.belowThreshold).toBe(false);
+    });
+
     it('outputs correct total percentages', () => {
       expectToMatchObject(result.totals, {
         decreased: false, // Threshold is 100
+        belowThreshold: false, // threshold is 40
+        pcts: {
+          branches: 50,
+          functions: 50,
+          lines: 50,
+          statements: 50
+        }
+      });
+    });
+  });
+
+  describe('coverage decreased under total threshold', () => {
+    beforeEach(() => {
+      // Set coverageDecreaseThreshold to 100% so we only test coverageThreshold.
+      result = diffChecker(
+        fileFullCovered,
+        fileHalfCovered,
+        undefined,
+        60,
+        100
+      );
+    });
+
+    it('should not regress', () => {
+      // Total is now 50% but overall threshold is 40% so it still passes.
+      expect(result.regression).toBe(false);
+    });
+
+    it('should be below threshold', () => {
+      // Total is now 50% but overall threshold is 40% so it still passes.
+      expect(result.belowThreshold).toBe(true);
+    });
+
+    it('outputs correct total percentages', () => {
+      expectToMatchObject(result.totals, {
+        belowThreshold: true,
+        decreased: false, // Threshold is 60
         pcts: {
           branches: 50,
           functions: 50,
@@ -113,6 +167,7 @@ describe('diffChecker', () => {
       expect(
         diffChecker(fileFullCovered, fileFullCovered, undefined, 0).totals
       ).toMatchObject({
+        belowThreshold: false, // threshold is 100
         deltas: { lines: 0, functions: 0, statements: 0, branches: 0 },
         pcts: {
           lines: 100,
