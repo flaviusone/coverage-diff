@@ -22,6 +22,7 @@ export const diffChecker = (
   coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!
 ): DiffCheckResults => {
   let regression = false;
+  let belowThreshold = false;
   const diff = coverageDiffer(base, head);
   const diffMap = objectToMap(diff);
   const percentageMap: Map<string, FileResultFormat> = new Map();
@@ -40,16 +41,21 @@ export const diffChecker = (
         checkCriteria,
         coverageDecreased
       );
-      const belowThreshold = checkCoverageForCondition(
+      const itemBelowThreshold = checkCoverageForCondition(
         head[k],
         checkCriteria,
         isBelowThreshold
       );
 
-      // Coverage decreased on a file or under threshold, regress.
       // Ignore the total field as we check only files.
-      if ((decreased || belowThreshold) && k !== 'total') {
-        regression = true;
+      if (k !== 'total') {
+        // Coverage decreased on a file or under threshold, regress.
+        if (decreased) {
+          regression = true;
+        }
+        if (itemBelowThreshold) {
+          belowThreshold = true;
+        }
       }
 
       percentageMap.set(k, {
@@ -57,7 +63,8 @@ export const diffChecker = (
           ...diffPercentages
         },
         pcts: getSummaryPercentages(head[k]),
-        decreased
+        decreased,
+        belowThreshold: itemBelowThreshold
       });
     }
   });
@@ -73,14 +80,25 @@ export const diffChecker = (
         statements: head.total.statements.pct,
         branches: head.total.branches.pct
       },
-      decreased: false
+      decreased: false,
+      belowThreshold: checkCoverageForCondition(
+        head.total,
+        checkCriteria,
+        isBelowThreshold
+      )
     };
   }
 
   // Exclude total from files output.
   percentageMap.delete('total');
 
-  return { files: mapToObject(percentageMap), diff, totals, regression };
+  return {
+    files: mapToObject(percentageMap),
+    diff,
+    totals,
+    regression,
+    belowThreshold
+  };
 };
 
 const checkCoverageForCondition = (

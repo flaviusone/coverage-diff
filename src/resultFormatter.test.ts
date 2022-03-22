@@ -15,7 +15,8 @@ const filesResults: FilesResults = {
       functions: 3,
       branches: 14
     },
-    decreased: true
+    decreased: true,
+    belowThreshold: false
   },
   file2: {
     deltas: {
@@ -30,7 +31,8 @@ const filesResults: FilesResults = {
       functions: 2,
       branches: 8
     },
-    decreased: false
+    decreased: false,
+    belowThreshold: false
   }
 };
 
@@ -47,7 +49,8 @@ const totalResults: FileResultFormat = {
     functions: 100,
     branches: 100
   },
-  decreased: false
+  decreased: false,
+  belowThreshold: false
 };
 
 describe('resultFormatter', () => {

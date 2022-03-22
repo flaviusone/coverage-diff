@@ -21,6 +21,7 @@ export interface CoverageDiffOutput {
   diff: JsonSummary;
   results: string;
   regression: boolean;
+  belowThreshold: boolean;
 }
 
 export type Criteria = 'lines' | 'branches' | 'functions' | 'statements';
@@ -38,6 +39,7 @@ export interface DiffCheckResults {
   totals: FileResultFormat;
   diff: JsonSummary;
   regression: boolean;
+  belowThreshold: boolean;
 }
 
 export interface FilesResults {
@@ -48,6 +50,7 @@ export interface FileResultFormat {
   deltas: FileResultFields;
   pcts: FileResultFields;
   decreased: boolean;
+  belowThreshold: boolean;
 }
 
 export interface FileResultFields {
