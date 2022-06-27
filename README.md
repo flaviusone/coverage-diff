@@ -8,6 +8,7 @@
   - Formatted as markdown table
 - Fail if coverage decreases on a file (check on percentage) for any of the lines/func/statements/branches. Can
    be configured to only check some criteria.
+- Separate threshold for new files `newFileCoverageThreshold`, defaults to `coverageThreshold` if not passed
 - Written in Typescript.
 
 ## Usage
