@@ -15,6 +15,7 @@ Object {
       "skipped": 0,
       "total": 0,
     },
+    "isNewFile": false,
     "lines": Object {
       "covered": -1,
       "pct": -50,
@@ -41,6 +42,7 @@ Object {
       "skipped": 0,
       "total": 0,
     },
+    "isNewFile": false,
     "lines": Object {
       "covered": -1,
       "pct": -50,
@@ -72,6 +74,7 @@ Object {
       "skipped": 0,
       "total": 0,
     },
+    "isNewFile": false,
     "lines": Object {
       "covered": 1,
       "pct": 50,
@@ -98,6 +101,7 @@ Object {
       "skipped": 0,
       "total": 0,
     },
+    "isNewFile": false,
     "lines": Object {
       "covered": 1,
       "pct": 50,
@@ -129,6 +133,7 @@ Object {
       "skipped": 0,
       "total": 0,
     },
+    "isNewFile": false,
     "lines": Object {
       "covered": 0,
       "pct": 0,
@@ -155,6 +160,7 @@ Object {
       "skipped": 0,
       "total": 2,
     },
+    "isNewFile": true,
     "lines": Object {
       "covered": 2,
       "pct": 100,
@@ -181,6 +187,7 @@ Object {
       "skipped": 0,
       "total": 0,
     },
+    "isNewFile": false,
     "lines": Object {
       "covered": 0,
       "pct": 0,
