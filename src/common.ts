@@ -4,6 +4,7 @@ export interface CoverageSummary {
   statements: CoverageInfo;
   functions: CoverageInfo;
   branches: CoverageInfo;
+  isNewFile: boolean;
 }
 
 export interface CoverageInfo {
@@ -32,6 +33,8 @@ export interface ConfigOptions {
   coverageThreshold?: number;
   /* Fail coverage check if per-file coverage decrease is lower */
   coverageDecreaseThreshold?: number;
+  /* Fail coverage check if per-file coverage is lower than this for new files only */
+  newFileCoverageThreshold?: number;
 }
 
 export interface DiffCheckResults {
@@ -51,6 +54,7 @@ export interface FileResultFormat {
   pcts: FileResultFields;
   decreased: boolean;
   belowThreshold: boolean;
+  isNewFile: boolean;
 }
 
 export interface FileResultFields {

@@ -19,7 +19,8 @@ export const diffChecker = (
   head: JsonSummary,
   checkCriteria = defaultOptions.checkCriteria!,
   coverageThreshold = defaultOptions.coverageThreshold!,
-  coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!
+  coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!,
+  newFileCoverageThreshold = coverageThreshold
 ): DiffCheckResults => {
   let regression = false;
   let belowThreshold = false;
@@ -29,44 +30,57 @@ export const diffChecker = (
   const nonZeroTest = (x: number) => x !== 0;
   const coverageDecreased = (x: number) =>
     x < 0 ? Math.abs(x) >= coverageDecreaseThreshold : false;
-  const isBelowThreshold = (x: number) => x < coverageThreshold;
+    const isBelowThreshold = (x: number) => x < coverageThreshold;
+    const isBelowNewFileThreshold = (x: number) => x < newFileCoverageThreshold;
 
   diffMap.forEach((v, k) => {
     const diffPercentages = getSummaryPercentages(v);
 
-    // Only check files that changed coverage.
-    if (Object.values(diffPercentages).some(nonZeroTest)) {
-      const decreased = checkCoverageForCondition(
+    let itemBelowThreshold = false;
+    let decreased = false;
+
+    // Only check files that changed coverage. or new files
+    if (v.isNewFile) {
+      itemBelowThreshold = checkCoverageForCondition(
+        head[k],
+        checkCriteria,
+        isBelowNewFileThreshold
+      );
+    } else if (Object.values(diffPercentages).some(nonZeroTest)) {
+      decreased = checkCoverageForCondition(
         v,
         checkCriteria,
         coverageDecreased
       );
-      const itemBelowThreshold = checkCoverageForCondition(
+      itemBelowThreshold = checkCoverageForCondition(
         head[k],
         checkCriteria,
         isBelowThreshold
       );
-
-      // Ignore the total field as we check only files.
-      if (k !== 'total') {
-        // Coverage decreased on a file or under threshold, regress.
-        if (decreased) {
-          regression = true;
-        }
-        if (itemBelowThreshold) {
-          belowThreshold = true;
-        }
-      }
-
-      percentageMap.set(k, {
-        deltas: {
-          ...diffPercentages
-        },
-        pcts: getSummaryPercentages(head[k]),
-        decreased,
-        belowThreshold: itemBelowThreshold
-      });
+    } else {
+      return;
     }
+
+    // Ignore the total field as we check only files.
+    if (k !== 'total') {
+      // Coverage decreased on a file or under threshold, regress.
+      if (decreased) {
+        regression = true;
+      }
+      if (itemBelowThreshold) {
+        belowThreshold = true;
+      }
+    }
+
+    percentageMap.set(k, {
+      deltas: {
+        ...diffPercentages
+      },
+      pcts: getSummaryPercentages(head[k]),
+      decreased,
+      belowThreshold: itemBelowThreshold,
+      isNewFile: v.isNewFile
+    });
   });
 
   let totals = percentageMap.get('total');
@@ -85,7 +99,8 @@ export const diffChecker = (
         head.total,
         checkCriteria,
         isBelowThreshold
-      )
+      ),
+      isNewFile: false
     };
   }
 

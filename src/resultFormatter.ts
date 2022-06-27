@@ -33,14 +33,14 @@ const formatTotal = (total: FileResultFormat): string => {
 const formatFilesResults = (files: FilesResults): string => {
   let noChange = true;
   const table: Array<(string | number)[]> = [];
-  const header = ['Ok', 'File', 'Lines', 'Branches', 'Functions', 'Statements'];
+  const header = ['Ok', 'File (✨=New File)', 'Lines', 'Branches', 'Functions', 'Statements'];
   table.push(header);
 
   Object.keys(files).forEach((file) => {
-    const { deltas, pcts, decreased } = files[file];
+    const { deltas, pcts, decreased, belowThreshold, isNewFile } = files[file];
     const row = [
-      decreased ? '🔴' : '✅',
-      file,
+      decreased || belowThreshold ? '🔴' : '✅',
+      `${isNewFile ? '✨ ' : ''}${file}`,
       `${pcts.lines}%<br>(${formatDelta(deltas.lines)})`,
       `${pcts.branches}%<br>(${formatDelta(deltas.branches)})`,
       `${pcts.functions}%<br>(${formatDelta(deltas.functions)})`,
