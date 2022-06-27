@@ -17,7 +17,7 @@ export function diff(
   head: JsonSummary,
   options = defaultOptions
 ): CoverageDiffOutput {
-  const { checkCriteria, coverageThreshold, coverageDecreaseThreshold } =
+  const { checkCriteria, coverageThreshold, coverageDecreaseThreshold, newFileCoverageThreshold } =
     options;
 
   const { regression, files, totals, diff, belowThreshold } = diffChecker(
@@ -25,7 +25,8 @@ export function diff(
     head,
     checkCriteria,
     coverageThreshold,
-    coverageDecreaseThreshold
+    coverageDecreaseThreshold,
+    newFileCoverageThreshold
   );
 
   const results = resultFormatter(files, totals);
