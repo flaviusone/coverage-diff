@@ -46,6 +46,16 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ fromJson(steps.request.outputs.data).head.repo.full_name }}
           ref: ${{ steps.pr_data.outputs.branch }}
+        with:
+          route: ${{ github.event.issue.pull_request.url }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout PR Branch
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ fromJson(steps.request.outputs.data).head.repo.full_name }}
+          ref: ${{ steps.pr_data.outputs.branch }}
       - uses: actions/setup-node@v2
           node-version: '14'
           cache: 'yarn'
