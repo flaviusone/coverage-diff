@@ -46,7 +46,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: ${{ fromJson(steps.request.outputs.data).head.repo.full_name }}
           ref: ${{ steps.pr_data.outputs.branch }}
-        with:
+      - uses: actions/setup-node@v2
           node-version: '14'
           cache: 'yarn'
       - name: Install modules
