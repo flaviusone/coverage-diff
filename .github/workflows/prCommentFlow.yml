@@ -1,10 +1,11 @@
-name: PR Test flow
+name: PR Comment flow
 on:
-  pull_request:
-    branches:
-      - master
+  issue_comment:
+    types:
+      - created
 jobs:
   test:
+    if: contains(github.event.comment.body, '/test')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,6 +18,7 @@ jobs:
       - name: Run tests
         run: yarn test
   lint:
+    if: contains(github.event.comment.body, '/test')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
