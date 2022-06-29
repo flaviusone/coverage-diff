@@ -5,8 +5,8 @@ on:
       - created
 jobs:
   test:
-    runs-on: ubuntu-latest
     if: contains(github.event.comment.body, '/test')
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -18,8 +18,8 @@ jobs:
       - name: Run tests
         run: yarn test
   lint:
-    runs-on: ubuntu-latest
     if: contains(github.event.comment.body, '/test')
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
