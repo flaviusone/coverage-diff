@@ -1,5 +1,7 @@
 # coverage-diff
 
+## Test
+
 ## What it does
 
 - Accepts base-summary.json and head-summary.json
