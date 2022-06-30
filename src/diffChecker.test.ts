@@ -215,7 +215,7 @@ describe('diffChecker', () => {
     });
 
     it('should be below threshold', () => {
-      // Total is now 50% but file threshold is 40%, and new file threshold is 40, so it should be below the threshold
+      // Total is now 50% but file threshold is 40%, and new file threshold is 40, new file is below threshold, global is above threshold
       expect(result.belowThreshold).toBe(true);
     });
 
@@ -252,7 +252,7 @@ describe('diffChecker', () => {
     });
 
     it('should be below threshold', () => {
-      // Total is now 75% but file threshold is 60% so it should be belowThreshold
+      // Total is now 75% but file threshold is 60%, new file is below threshold, global is above threshold
       expect(result.belowThreshold).toBe(true);
     });
 
@@ -289,8 +289,8 @@ describe('diffChecker', () => {
     });
 
     it('should not be below threshold', () => {
-      // Total is now 50% but file threshold is 40%, and new file threshold is 45, so it should be above the threshold
-      expect(result.belowThreshold).toBe(false);
+      // Total is now 50% but file threshold is 40%, and new file threshold is 45, new file is below threshold, global is above threshold
+      expect(result.belowThreshold).toBe(true);
     });
 
     it('outputs correct total percentages', () => {

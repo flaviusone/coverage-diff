@@ -24,7 +24,8 @@ describe('diff', () => {
         fileFullCovered,
         coverageDiff.defaultOptions.checkCriteria,
         coverageDiff.defaultOptions.coverageThreshold,
-        coverageDiff.defaultOptions.coverageDecreaseThreshold
+        coverageDiff.defaultOptions.coverageDecreaseThreshold,
+        coverageDiff.defaultOptions.newFileCoverageThreshold // will be undefined - defaults to coverageThreshold in diffChecker
       );
     });
 
@@ -48,7 +49,8 @@ describe('diff', () => {
       const mockedOptions: ConfigOptions = {
         checkCriteria: ['lines'],
         coverageThreshold: 100,
-        coverageDecreaseThreshold: 0
+        coverageDecreaseThreshold: 0,
+        newFileCoverageThreshold: 1
       };
 
       coverageDiff.diff(fileNotCovered, fileFullCovered, mockedOptions);
@@ -58,26 +60,10 @@ describe('diff', () => {
         fileFullCovered,
         mockedOptions.checkCriteria,
         mockedOptions.coverageThreshold,
-        mockedOptions.coverageDecreaseThreshold
+        mockedOptions.coverageDecreaseThreshold,
+        mockedOptions.newFileCoverageThreshold,
       );
     });
 
-    it('should call the diffChecker module with deprecated option', () => {
-      const mockedOptions: ConfigOptions = {
-        checkCriteria: ['lines'],
-        coverageThreshold: 100,
-        coverageDecreaseThreshold: 0
-      };
-
-      coverageDiff.diff(fileNotCovered, fileFullCovered, mockedOptions);
-
-      expect(diffCheckerSpy).toHaveBeenCalledWith(
-        fileNotCovered,
-        fileFullCovered,
-        mockedOptions.checkCriteria,
-        mockedOptions.coverageThreshold,
-        mockedOptions.coverageDecreaseThreshold
-      );
-    });
   });
 });
