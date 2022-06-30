@@ -69,6 +69,23 @@ const filesResults: FilesResults = {
     },
     decreased: false,
     belowThreshold: false
+  },
+  file5: {
+    isNewFile: true,
+    deltas: {
+      lines: 10,
+      statements: 10,
+      functions: 20,
+      branches: 30
+    },
+    pcts: {
+      lines: 20,
+      statements: 5,
+      functions: 2,
+      branches: 8
+    },
+    decreased: false,
+    belowThreshold: true
   }
 };
 
@@ -92,6 +109,18 @@ const totalResults: FileResultFormat = {
 
 describe('resultFormatter', () => {
   it('should format files results as markdown table', () => {
+    expect(resultFormatter(filesResults, totalResults, 1, 2, 3)).toMatchSnapshot();
+  });
+  
+  it('should use defaults', () => {
+    expect(resultFormatter(filesResults, totalResults)).toMatchSnapshot();
+  });
+  
+  it('should default to coverageThreshold for newFileCoverageThreshold', () => {
+    expect(resultFormatter(filesResults, totalResults, 1, 2)).toMatchSnapshot();
+  });
+
+  it('should format files results as markdown table with defaults', () => {
     expect(resultFormatter(filesResults, totalResults)).toMatchSnapshot();
   });
 
