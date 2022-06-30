@@ -61,9 +61,8 @@ describe('diff', () => {
         mockedOptions.checkCriteria,
         mockedOptions.coverageThreshold,
         mockedOptions.coverageDecreaseThreshold,
-        mockedOptions.newFileCoverageThreshold,
+        mockedOptions.newFileCoverageThreshold
       );
     });
-
   });
 });

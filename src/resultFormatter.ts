@@ -33,7 +33,14 @@ const formatTotal = (total: FileResultFormat): string => {
 const formatFilesResults = (files: FilesResults): string => {
   let noChange = true;
   const table: Array<(string | number)[]> = [];
-  const header = ['Ok', 'File (✨=New File)', 'Lines', 'Branches', 'Functions', 'Statements'];
+  const header = [
+    'Ok',
+    'File (✨=New File)',
+    'Lines',
+    'Branches',
+    'Functions',
+    'Statements'
+  ];
   table.push(header);
 
   Object.keys(files).forEach((file) => {

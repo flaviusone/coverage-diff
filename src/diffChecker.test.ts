@@ -259,7 +259,7 @@ describe('diffChecker', () => {
     it('outputs correct total percentages', () => {
       expectToMatchObject(result.totals, {
         belowThreshold: false, // Threshold is 60, total is 75, total is not below, but file is
-        decreased: false, 
+        decreased: false,
         pcts: {
           branches: 75,
           functions: 75,
@@ -296,7 +296,7 @@ describe('diffChecker', () => {
     it('outputs correct total percentages', () => {
       expectToMatchObject(result.totals, {
         belowThreshold: false, // Threshold is 40, total is 50
-        decreased: false, 
+        decreased: false,
         pcts: {
           branches: 50,
           functions: 50,

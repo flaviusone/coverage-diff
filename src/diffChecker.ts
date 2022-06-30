@@ -32,7 +32,11 @@ export const diffChecker = (
   const isBelowThreshold = (x: number) => x < coverageThreshold;
   const isBelowNewFileThreshold = (x: number) => x < newFileCoverageThreshold;
 
-  const checkItemBelowThreshold = (diff: CoverageSummary, coverageToCompare: CoverageSummary, checkCriteria: Criteria[]) => {
+  const checkItemBelowThreshold = (
+    diff: CoverageSummary,
+    coverageToCompare: CoverageSummary,
+    checkCriteria: Criteria[]
+  ) => {
     const condition = diff.isNewFile
       ? isBelowNewFileThreshold
       : isBelowThreshold;
@@ -41,7 +45,7 @@ export const diffChecker = (
       checkCriteria,
       condition
     );
-  }
+  };
 
   const checkItemDecreased = (
     diff: CoverageSummary,
@@ -51,7 +55,6 @@ export const diffChecker = (
     return checkCoverageForCondition(diff, checkCriteria, coverageDecreased);
   };
 
-
   diffMap.forEach((diff, fileName) => {
     const diffPercentages = getSummaryPercentages(diff);
     if (shouldExcludeItem(diff, diffPercentages)) {
@@ -59,7 +62,11 @@ export const diffChecker = (
     }
 
     const itemDecreased = checkItemDecreased(diff, checkCriteria);
-    const itemBelowThreshold = checkItemBelowThreshold(diff, head[fileName], checkCriteria)
+    const itemBelowThreshold = checkItemBelowThreshold(
+      diff,
+      head[fileName],
+      checkCriteria
+    );
 
     // Coverage decreased on a file, regress.
     // only check file specific regressions, ignore regressions in the total, regression should still be set
@@ -81,9 +88,8 @@ export const diffChecker = (
       pcts: getSummaryPercentages(head[fileName]),
       isNewFile: diff.isNewFile,
       decreased: itemDecreased,
-      belowThreshold: itemBelowThreshold,
+      belowThreshold: itemBelowThreshold
     });
-    
   });
 
   let totals = percentageMap.get('total');
@@ -133,13 +139,14 @@ const checkCoverageForCondition = (
 
 const zeroTest = (x: number) => x === 0;
 
-const shouldExcludeItem = (diff: CoverageSummary, diffPercentages: ReturnType<typeof getSummaryPercentages>) => {
+const shouldExcludeItem = (
+  diff: CoverageSummary,
+  diffPercentages: ReturnType<typeof getSummaryPercentages>
+) => {
   if (diff.isNewFile) {
     return false;
-  }
-  else {
+  } else {
     // if every value is zero, exclude the item from the diff because nothing has changed
-    return Object.values(diffPercentages).every(zeroTest)
+    return Object.values(diffPercentages).every(zeroTest);
   }
-}
-
+};

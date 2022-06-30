@@ -22,7 +22,7 @@ export const coverageDiffer = (
       diffMap.set(k, diffSummary(v, fileSummary));
     } else {
       // New file.
-      diffMap.set(k, {...v, isNewFile: true});
+      diffMap.set(k, { ...v, isNewFile: true });
     }
   });
 

@@ -361,7 +361,7 @@ export const onlyLinesIncreased: JsonSummary = {
   }
 };
 
-export const newFile: JsonSummary ={
+export const newFile: JsonSummary = {
   ...fileFullCovered,
   fileB: {
     ...fileFullCovered.fileA
@@ -402,7 +402,6 @@ export const newFileNotCovered: JsonSummary = {
     isNewFile: true
   }
 };
-
 
 export const newFileHalfCovered: JsonSummary = {
   ...fileFullCovered,
