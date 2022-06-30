@@ -251,7 +251,7 @@ describe('diffChecker', () => {
       expect(result.regression).toBe(false);
     });
 
-    it.only('should be below threshold', () => {
+    it('should be below threshold', () => {
       // Total is now 75% but file threshold is 60% so it should be belowThreshold
       expect(result.belowThreshold).toBe(true);
     });
