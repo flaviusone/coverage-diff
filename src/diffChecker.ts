@@ -27,60 +27,63 @@ export const diffChecker = (
   const diff = coverageDiffer(base, head);
   const diffMap = objectToMap(diff);
   const percentageMap: Map<string, FileResultFormat> = new Map();
-  const nonZeroTest = (x: number) => x !== 0;
   const coverageDecreased = (x: number) =>
     x < 0 ? Math.abs(x) >= coverageDecreaseThreshold : false;
-    const isBelowThreshold = (x: number) => x < coverageThreshold;
-    const isBelowNewFileThreshold = (x: number) => x < newFileCoverageThreshold;
+  const isBelowThreshold = (x: number) => x < coverageThreshold;
+  const isBelowNewFileThreshold = (x: number) => x < newFileCoverageThreshold;
 
-  diffMap.forEach((v, k) => {
-    const diffPercentages = getSummaryPercentages(v);
+  const checkItemBelowThreshold = (diff: CoverageSummary, coverageToCompare: CoverageSummary, checkCriteria: Criteria[]) => {
+    const condition = diff.isNewFile
+      ? isBelowNewFileThreshold
+      : isBelowThreshold;
+    return checkCoverageForCondition(
+      coverageToCompare,
+      checkCriteria,
+      condition
+    );
+  }
 
-    let itemBelowThreshold = false;
-    let decreased = false;
+  const checkItemDecreased = (
+    diff: CoverageSummary,
+    checkCriteria: Criteria[]
+  ) => {
+    if (diff.isNewFile) return false;
+    return checkCoverageForCondition(diff, checkCriteria, coverageDecreased);
+  };
 
-    // Only check files that changed coverage. or new files
-    if (v.isNewFile) {
-      itemBelowThreshold = checkCoverageForCondition(
-        head[k],
-        checkCriteria,
-        isBelowNewFileThreshold
-      );
-    } else if (Object.values(diffPercentages).some(nonZeroTest)) {
-      decreased = checkCoverageForCondition(
-        v,
-        checkCriteria,
-        coverageDecreased
-      );
-      itemBelowThreshold = checkCoverageForCondition(
-        head[k],
-        checkCriteria,
-        isBelowThreshold
-      );
-    } else {
+
+  diffMap.forEach((diff, fileName) => {
+    const diffPercentages = getSummaryPercentages(diff);
+    if (shouldExcludeItem(diff, diffPercentages)) {
       return;
     }
 
-    // Ignore the total field as we check only files.
-    if (k !== 'total') {
-      // Coverage decreased on a file or under threshold, regress.
-      if (decreased) {
+    const itemDecreased = checkItemDecreased(diff, checkCriteria);
+    const itemBelowThreshold = checkItemBelowThreshold(diff, head[fileName], checkCriteria)
+
+    // Coverage decreased on a file, regress.
+    // only check file specific regressions, ignore regressions in the total, regression should still be set
+    // if any non-new file was changed
+    if (fileName !== 'total') {
+      if (itemDecreased) {
         regression = true;
       }
-      if (itemBelowThreshold) {
-        belowThreshold = true;
-      }
+    }
+    // If Total or any file is below threshold, return belowThreshold as true
+    if (itemBelowThreshold) {
+      belowThreshold = true;
     }
 
-    percentageMap.set(k, {
+    percentageMap.set(fileName, {
       deltas: {
         ...diffPercentages
       },
-      pcts: getSummaryPercentages(head[k]),
-      decreased,
+      pcts: getSummaryPercentages(head[fileName]),
+      isNewFile: diff.isNewFile,
+      decreased: itemDecreased,
       belowThreshold: itemBelowThreshold,
-      isNewFile: v.isNewFile
     });
+    
   });
 
   let totals = percentageMap.get('total');
@@ -127,3 +130,16 @@ const checkCoverageForCondition = (
 
   return values.some(condition);
 };
+
+const zeroTest = (x: number) => x === 0;
+
+const shouldExcludeItem = (diff: CoverageSummary, diffPercentages: ReturnType<typeof getSummaryPercentages>) => {
+  if (diff.isNewFile) {
+    return false;
+  }
+  else {
+    // if every value is zero, exclude the item from the diff because nothing has changed
+    return Object.values(diffPercentages).every(zeroTest)
+  }
+}
+
