@@ -2,6 +2,7 @@ import { JsonSummary } from './common';
 
 export const fileFullCovered: JsonSummary = {
   total: {
+    isNewFile: false,
     lines: {
       total: 2,
       covered: 2,
@@ -28,6 +29,7 @@ export const fileFullCovered: JsonSummary = {
     }
   },
   fileA: {
+    isNewFile: false,
     lines: {
       total: 2,
       covered: 2,
@@ -58,6 +60,7 @@ export const fileFullCovered: JsonSummary = {
 export const fileFullCoveredfileHalfCovered: JsonSummary = {
   ...fileFullCovered,
   fileB: {
+    isNewFile: false,
     lines: {
       total: 2,
       covered: 1,
@@ -84,6 +87,7 @@ export const fileFullCoveredfileHalfCovered: JsonSummary = {
     }
   },
   total: {
+    isNewFile: false,
     lines: {
       total: 4,
       covered: 3,
@@ -113,6 +117,7 @@ export const fileFullCoveredfileHalfCovered: JsonSummary = {
 
 export const fileNotCovered: JsonSummary = {
   total: {
+    isNewFile: false,
     lines: {
       total: 2,
       covered: 0,
@@ -139,6 +144,7 @@ export const fileNotCovered: JsonSummary = {
     }
   },
   fileA: {
+    isNewFile: false,
     lines: {
       total: 2,
       covered: 0,
@@ -168,6 +174,7 @@ export const fileNotCovered: JsonSummary = {
 
 export const fileHalfCovered: JsonSummary = {
   total: {
+    isNewFile: false,
     lines: {
       total: 2,
       covered: 1,
@@ -194,6 +201,7 @@ export const fileHalfCovered: JsonSummary = {
     }
   },
   fileA: {
+    isNewFile: false,
     lines: {
       total: 2,
       covered: 1,
@@ -224,6 +232,7 @@ export const fileHalfCovered: JsonSummary = {
 export const coverageNotChanged: JsonSummary = {
   ...fileFullCovered,
   fileA: {
+    isNewFile: false,
     lines: {
       total: 2,
       covered: 1,
@@ -253,6 +262,7 @@ export const coverageNotChanged: JsonSummary = {
 
 export const coverageDecreased: JsonSummary = {
   total: {
+    isNewFile: false,
     lines: {
       total: 0,
       covered: 1,
@@ -279,6 +289,7 @@ export const coverageDecreased: JsonSummary = {
     }
   },
   fileA: {
+    isNewFile: false,
     lines: {
       total: 0,
       covered: -1,
@@ -309,6 +320,7 @@ export const coverageDecreased: JsonSummary = {
 export const totalDecreased: JsonSummary = {
   ...coverageNotChanged,
   total: {
+    isNewFile: false,
     lines: {
       total: 2,
       covered: 1,
@@ -353,5 +365,75 @@ export const newFile: JsonSummary = {
   ...fileFullCovered,
   fileB: {
     ...fileFullCovered.fileA
+  }
+};
+
+export const newFileNotCovered: JsonSummary = {
+  ...fileFullCovered,
+  total: {
+    isNewFile: false,
+    lines: {
+      total: 4,
+      covered: 2,
+      skipped: 0,
+      pct: 50
+    },
+    statements: {
+      total: 4,
+      covered: 2,
+      skipped: 0,
+      pct: 50
+    },
+    functions: {
+      total: 4,
+      covered: 2,
+      skipped: 0,
+      pct: 50
+    },
+    branches: {
+      total: 4,
+      covered: 2,
+      skipped: 0,
+      pct: 50
+    }
+  },
+  fileB: {
+    ...fileNotCovered.fileA,
+    isNewFile: true
+  }
+};
+
+export const newFileHalfCovered: JsonSummary = {
+  ...fileFullCovered,
+  total: {
+    isNewFile: false,
+    lines: {
+      total: 4,
+      covered: 3,
+      skipped: 0,
+      pct: 75
+    },
+    statements: {
+      total: 4,
+      covered: 3,
+      skipped: 0,
+      pct: 75
+    },
+    functions: {
+      total: 4,
+      covered: 3,
+      skipped: 0,
+      pct: 75
+    },
+    branches: {
+      total: 4,
+      covered: 3,
+      skipped: 0,
+      pct: 75
+    }
+  },
+  fileB: {
+    ...fileHalfCovered.fileA,
+    isNewFile: true
   }
 };
