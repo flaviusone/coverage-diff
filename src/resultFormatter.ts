@@ -9,10 +9,12 @@ export const resultFormatter = (
   coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!,
   newFileCoverageThreshold = coverageThreshold
 ): string => {
-  const formattedFiles = formatFilesResults(files, 
+  const formattedFiles = formatFilesResults(
+    files,
     coverageThreshold,
     coverageDecreaseThreshold,
-    newFileCoverageThreshold);
+    newFileCoverageThreshold
+  );
   const formattedTotal = formatTotal(total);
   return `${formattedFiles}${formattedTotal}`;
 };
@@ -37,10 +39,12 @@ const formatTotal = (total: FileResultFormat): string => {
   return '\n\nTotal:\n\n' + markdownTable(table);
 };
 
-const formatFilesResults = (files: FilesResults,
+const formatFilesResults = (
+  files: FilesResults,
   coverageThreshold = defaultOptions.coverageThreshold!,
   coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!,
-  newFileCoverageThreshold = coverageThreshold): string => {
+  newFileCoverageThreshold = coverageThreshold
+): string => {
   let noChange = true;
   const table: Array<(string | number)[]> = [];
   const header = [
@@ -57,14 +61,16 @@ const formatFilesResults = (files: FilesResults,
     const { deltas, pcts, decreased, belowThreshold, isNewFile } = files[file];
     const reasons = [];
     if (belowThreshold) {
-      reasons.push(`Below ${isNewFile ? coverageThreshold : newFileCoverageThreshold}%`);
+      reasons.push(
+        `Below ${isNewFile ? coverageThreshold : newFileCoverageThreshold}%`
+      );
     }
     if (decreased) {
-      reasons.push(`Decreased >${coverageDecreaseThreshold}%`)
+      reasons.push(`Decreased >${coverageDecreaseThreshold}%`);
     }
 
     const row = [
-      decreased || belowThreshold ? `🔴<br />(${reasons.join(" & ")})` : '✅',
+      decreased || belowThreshold ? `🔴<br />(${reasons.join(' & ')})` : '✅',
       `${isNewFile ? '(New) ' : ''}${file}`,
       `${pcts.lines}%<br>(${formatDelta(deltas.lines)})`,
       `${pcts.branches}%<br>(${formatDelta(deltas.branches)})`,
