@@ -70,6 +70,40 @@ const filesResults: FilesResults = {
     decreased: false,
     belowThreshold: false
   },
+  file3: {
+    isNewFile: false,
+    deltas: {
+      lines: 10,
+      statements: 10,
+      functions: 20,
+      branches: 30
+    },
+    pcts: {
+      lines: 20,
+      statements: 5,
+      functions: 2,
+      branches: 8
+    },
+    decreased: false,
+    belowThreshold: true
+  },
+  file4: {
+    isNewFile: true,
+    deltas: {
+      lines: 10,
+      statements: 10,
+      functions: 20,
+      branches: 30
+    },
+    pcts: {
+      lines: 20,
+      statements: 5,
+      functions: 2,
+      branches: 8
+    },
+    decreased: false,
+    belowThreshold: false
+  },
   file5: {
     isNewFile: true,
     deltas: {
