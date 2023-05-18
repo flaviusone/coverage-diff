@@ -34,7 +34,8 @@ export function diff(
     newFileCoverageThreshold
   );
 
-  const results = customFormatter?.(files, totals) || resultFormatter(files, totals);
+  const results =
+    customFormatter?.(files, totals) || resultFormatter(files, totals);
 
   return {
     diff,

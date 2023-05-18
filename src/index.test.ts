@@ -51,7 +51,7 @@ describe('diff', () => {
         coverageThreshold: 100,
         coverageDecreaseThreshold: 0,
         newFileCoverageThreshold: 1,
-        customFormatter: jest.fn(),
+        customFormatter: jest.fn()
       };
 
       coverageDiff.diff(fileNotCovered, fileFullCovered, mockedOptions);
@@ -64,10 +64,13 @@ describe('diff', () => {
         mockedOptions.coverageDecreaseThreshold,
         mockedOptions.newFileCoverageThreshold
       );
-      expect(mockedOptions.customFormatter).toHaveBeenCalledWith('mockedFiles', {
-        deltas: 'mockedTotals',
-        pcts: 'mockedPcts'
-      })
+      expect(mockedOptions.customFormatter).toHaveBeenCalledWith(
+        'mockedFiles',
+        {
+          deltas: 'mockedTotals',
+          pcts: 'mockedPcts'
+        }
+      );
     });
   });
 });
