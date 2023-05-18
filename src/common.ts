@@ -35,6 +35,8 @@ export interface ConfigOptions {
   coverageDecreaseThreshold?: number;
   /* Fail coverage check if per-file coverage is lower than this for new files only */
   newFileCoverageThreshold?: number;
+  /* Use it to generate your custom output */
+  customFormatter?: (files: FilesResults, totals: FileResultFormat) => string;
 }
 
 export interface DiffCheckResults {

@@ -21,7 +21,8 @@ export function diff(
     checkCriteria,
     coverageThreshold,
     coverageDecreaseThreshold,
-    newFileCoverageThreshold
+    newFileCoverageThreshold,
+    customFormatter
   } = options;
 
   const { regression, files, totals, diff, belowThreshold } = diffChecker(
@@ -33,7 +34,7 @@ export function diff(
     newFileCoverageThreshold
   );
 
-  const results = resultFormatter(files, totals);
+  const results = customFormatter?.(files, totals) || resultFormatter(files, totals);
 
   return {
     diff,
