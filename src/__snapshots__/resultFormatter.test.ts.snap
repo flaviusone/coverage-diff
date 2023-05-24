@@ -1,12 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`resultFormatter should default to coverageThreshold for newFileCoverageThreshold 1`] = `
+"| Ok (reason)             | File        | Lines         | Branches      | Functions    | Statements    |
+| ----------------------- | ----------- | ------------- | ------------- | ------------ | ------------- |
+| 🔴<br />(Decreased >2%) | file1       | 80%<br>(+10%) | 14%<br>(-30%) | 3%<br>(+20%) | 20%<br>(-10%) |
+| ✅                       | file2       | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| 🔴<br />(Below 1%)      | file3       | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| ✅                       | (New) file4 | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| 🔴<br />(Below 1%)      | (New) file5 | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+
+Total:
+
+| Lines       | Branches    | Functions   | Statements  |
+| ----------- | ----------- | ----------- | ----------- |
+| 100%(+100%) | 100%(+100%) | 100%(+100%) | 100%(+100%) |"
+`;
+
 exports[`resultFormatter should format files results as markdown table 1`] = `
-"| Ok | File (✨=New File) | Lines         | Branches      | Functions    | Statements    |
-| -- | ----------------- | ------------- | ------------- | ------------ | ------------- |
-| 🔴 | file1             | 80%<br>(+10%) | 14%<br>(-30%) | 3%<br>(+20%) | 20%<br>(-10%) |
-| ✅  | file2             | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
-| 🔴 | file3             | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
-| ✅  | ✨ file4           | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+"| Ok (reason)             | File        | Lines         | Branches      | Functions    | Statements    |
+| ----------------------- | ----------- | ------------- | ------------- | ------------ | ------------- |
+| 🔴<br />(Decreased >2%) | file1       | 80%<br>(+10%) | 14%<br>(-30%) | 3%<br>(+20%) | 20%<br>(-10%) |
+| ✅                       | file2       | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| 🔴<br />(Below 3%)      | file3       | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| ✅                       | (New) file4 | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| 🔴<br />(Below 1%)      | (New) file5 | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+
+Total:
+
+| Lines       | Branches    | Functions   | Statements  |
+| ----------- | ----------- | ----------- | ----------- |
+| 100%(+100%) | 100%(+100%) | 100%(+100%) | 100%(+100%) |"
+`;
+
+exports[`resultFormatter should format files results as markdown table with defaults 1`] = `
+"| Ok (reason)             | File        | Lines         | Branches      | Functions    | Statements    |
+| ----------------------- | ----------- | ------------- | ------------- | ------------ | ------------- |
+| 🔴<br />(Decreased >0%) | file1       | 80%<br>(+10%) | 14%<br>(-30%) | 3%<br>(+20%) | 20%<br>(-10%) |
+| ✅                       | file2       | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| 🔴<br />(Below 100%)    | file3       | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| ✅                       | (New) file4 | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| 🔴<br />(Below 100%)    | (New) file5 | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
 
 Total:
 
@@ -17,6 +50,22 @@ Total:
 
 exports[`resultFormatter should print descriptive message if coverage did't change 1`] = `
 "Coverage values did not change👌.
+
+Total:
+
+| Lines       | Branches    | Functions   | Statements  |
+| ----------- | ----------- | ----------- | ----------- |
+| 100%(+100%) | 100%(+100%) | 100%(+100%) | 100%(+100%) |"
+`;
+
+exports[`resultFormatter should use defaults 1`] = `
+"| Ok (reason)             | File        | Lines         | Branches      | Functions    | Statements    |
+| ----------------------- | ----------- | ------------- | ------------- | ------------ | ------------- |
+| 🔴<br />(Decreased >0%) | file1       | 80%<br>(+10%) | 14%<br>(-30%) | 3%<br>(+20%) | 20%<br>(-10%) |
+| ✅                       | file2       | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| 🔴<br />(Below 100%)    | file3       | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| ✅                       | (New) file4 | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
+| 🔴<br />(Below 100%)    | (New) file5 | 20%<br>(+10%) | 8%<br>(+30%)  | 2%<br>(+20%) | 5%<br>(+10%)  |
 
 Total:
 
