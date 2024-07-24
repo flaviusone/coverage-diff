@@ -19,7 +19,7 @@ import { diff as coverageDiff } from 'coverage-diff';
 
 const base = JSON.parse(fs.readFileSync('./base-summary.json'));
 const head = JSON.parse(fs.readFileSync('./head-summary.json'));
-const diff = coverageDiff.diff(base, head);
+const diff = coverageDiff(base, head);
 
 console.log(diff.diff);
 console.log(diff.results);
