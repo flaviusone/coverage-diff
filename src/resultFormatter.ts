@@ -1,11 +1,20 @@
 import markdownTable from 'markdown-table';
 import { FilesResults, FileResultFormat } from './common';
+import { defaultOptions } from './index';
 
 export const resultFormatter = (
   files: FilesResults,
-  total: FileResultFormat
+  total: FileResultFormat,
+  coverageThreshold = defaultOptions.coverageThreshold!,
+  coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!,
+  newFileCoverageThreshold = coverageThreshold
 ): string => {
-  const formattedFiles = formatFilesResults(files);
+  const formattedFiles = formatFilesResults(
+    files,
+    coverageThreshold,
+    coverageDecreaseThreshold,
+    newFileCoverageThreshold
+  );
   const formattedTotal = formatTotal(total);
   return `${formattedFiles}${formattedTotal}`;
 };
@@ -30,12 +39,17 @@ const formatTotal = (total: FileResultFormat): string => {
   return '\n\nTotal:\n\n' + markdownTable(table);
 };
 
-const formatFilesResults = (files: FilesResults): string => {
+const formatFilesResults = (
+  files: FilesResults,
+  coverageThreshold = defaultOptions.coverageThreshold!,
+  coverageDecreaseThreshold = defaultOptions.coverageDecreaseThreshold!,
+  newFileCoverageThreshold = coverageThreshold
+): string => {
   let noChange = true;
   const table: Array<(string | number)[]> = [];
   const header = [
-    'Ok',
-    'File (✨=New File)',
+    'Ok (reason)',
+    'File',
     'Lines',
     'Branches',
     'Functions',
@@ -45,9 +59,19 @@ const formatFilesResults = (files: FilesResults): string => {
 
   Object.keys(files).forEach((file) => {
     const { deltas, pcts, decreased, belowThreshold, isNewFile } = files[file];
+    const reasons = [];
+    if (belowThreshold) {
+      reasons.push(
+        `Below ${isNewFile ? coverageThreshold : newFileCoverageThreshold}%`
+      );
+    }
+    if (decreased) {
+      reasons.push(`Decreased >${coverageDecreaseThreshold}%`);
+    }
+
     const row = [
-      decreased || belowThreshold ? '🔴' : '✅',
-      `${isNewFile ? '✨ ' : ''}${file}`,
+      decreased || belowThreshold ? `🔴<br />(${reasons.join(' & ')})` : '✅',
+      `${isNewFile ? '(New) ' : ''}${file}`,
       `${pcts.lines}%<br>(${formatDelta(deltas.lines)})`,
       `${pcts.branches}%<br>(${formatDelta(deltas.branches)})`,
       `${pcts.functions}%<br>(${formatDelta(deltas.functions)})`,
